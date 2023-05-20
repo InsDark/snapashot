@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "353730302299",
+    "project_id": "snap-a-shot",
+    "storage_bucket": "snap-a-shot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353730302299:android:c3d642b797e17574538a7e",
+        "android_client_info": {
+          "package_name": "com.snapashot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353730302299-qd57qflc7082sr1kos59nj606mdc9kof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE5ft_eyumc0gLc3czXqHaG2oZHZ-2Cfs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353730302299-7iqqofbt9k0q6040fhjd4iodeijaamlc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

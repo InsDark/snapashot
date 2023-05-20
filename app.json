@@ -1,9 +1,16 @@
 {
   "expo": {
+    "android": {
+      "googleServicesFile": "./google-services.json"
+    },
+    "ios": {
+      "googleServicesFile": "./GoogleService-Info.plist"
+    },
     "scheme": "acme",
     "web": {
       "bundler": "metro"
     },
+    "plugins": ["@react-native-google-signin/google-signin"],
     "name": "snapashot",
     "slug": "snapashot"
   }
