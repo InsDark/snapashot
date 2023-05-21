@@ -7,6 +7,7 @@ import Navbar from '../../components/Navbar'
 import Calendar from '../../components/Calendar'
 import CalendarEvents from '../../components/calendar/CalendarEvents'
 import BottomNav from '../../components/BottomNav'
+import Quote from '../../components/Quote'
 const styles = StyleSheet.create({
   screen: {
     width: '100%',
@@ -36,7 +37,7 @@ const Home = () => {
       <Navbar />
       <View style={{flex: 12, width: Dimensions.get('screen').width}}>
         <CalendarEvents/>
-        <CalendarEvents/>
+        <Quote/>
         <BottomNav/>
       </View>
     </View>

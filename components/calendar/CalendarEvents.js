@@ -20,11 +20,11 @@ const CalendarEvents = () => {
         try{
             
             const getUserEvents = async() => {
-                const q = query(collection(db, 'matoshurtadodiegoaquiles@gmail.com'), where('date', '==', '1'))
-                const todayEvents = await getDocs(q)
-                let allEvents = []  
-                todayEvents.forEach(doc => allEvents.push( doc.data()))
-                console.log(allEvents)
+                // const q = query(collection(db, 'matoshurtadodiegoaquiles@gmail.com'), where('date', '==', '1'))
+                // const todayEvents = await getDocs(q)
+                // let allEvents = []  
+                // todayEvents.forEach(doc => allEvents.push( doc.data()))
+                // console.log(allEvents)
                
             }
             getUserEvents()
