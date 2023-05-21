@@ -22,9 +22,9 @@ const CalendarEvents = () => {
             const getUserEvents = async() => {
                 const q = query(collection(db, 'matoshurtadodiegoaquiles@gmail.com'), where('date', '==', '1'))
                 const todayEvents = await getDocs(q)
-                const allEvents =  todayEvents.map(doc => doc.data())
+                let allEvents = []  
+                todayEvents.forEach(doc => allEvents.push( doc.data()))
                 console.log(allEvents)
-                setEvents(allEvents)
                
             }
             getUserEvents()
@@ -36,7 +36,6 @@ const CalendarEvents = () => {
   return (
     <View style={{flex: 5}}>
         <Text style={styles.text}>Today's Events</Text>
-        {events.length > 0 ? events.forEach(event => (<Text>{event.name}</Text>)) : <Text>You dont have to worry about today's events'</Text>}
     </View>
   )
 }
