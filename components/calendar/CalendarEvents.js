@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { db } from '../../firebase'
-import {collection, getDocs, query, where} from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { COLORS } from '../../COLORS'
+import EventsContainer from './EventsContainer'
+import Button from '../Button'
 
-const styles =  StyleSheet.create({
+const styles = StyleSheet.create({
     text: {
         color: COLORS.lightGreen,
         fontSize: 20,
@@ -15,29 +18,38 @@ const styles =  StyleSheet.create({
 })
 
 const CalendarEvents = () => {
+    dayjs.extend(customParseFormat)
     const [events, setEvents] = useState([])
     useEffect((() => {
-        try{
-            
-            const getUserEvents = async() => {
-                // const q = query(collection(db, 'matoshurtadodiegoaquiles@gmail.com'), where('date', '==', '1'))
-                // const todayEvents = await getDocs(q)
-                // let allEvents = []  
-                // todayEvents.forEach(doc => allEvents.push( doc.data()))
-                // console.log(allEvents)
-               
+        try {
+
+            const getUserEvents = async () => {
+                const today = dayjs().format('YYYY-MM-DD')
+
+                const q = query(collection(db, 'matoshurtadodiegoaquiles@gmail.com'), where('date', '==', today))
+                const todayEvents = await getDocs(q)
+
+                if (!todayEvents) return
+                setEvents(todayEvents.docs)
+
+
             }
             getUserEvents()
         }
-        catch(e) {
+        catch (e) {
             console.log(err)
         }
     }), [])
-  return (
-    <View style={{flex: 5}}>
-        <Text style={styles.text}>Today's Events</Text>
-    </View>
-  )
+    return (
+        <View style={{ flex: 5 }}>
+            <Text style={styles.text}>Today's Events</Text>
+            {events.length > 0 ? <EventsContainer events={events} /> :
+                <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10}}>
+                    <Text style={{ ...styles.text, color: COLORS.white }}>No events available</Text>
+                    <Button buttonStyle={{backgroundColor: COLORS.lightGreen, padding: 8, borderRadius: 5}} textStyle={{color: COLORS.darkBlue, fontSize: 16, fontWeight: 'bold'}} title={'Add Event'}/>
+                </View>}
+        </View>
+    )
 }
 
 export default CalendarEvents
