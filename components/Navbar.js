@@ -7,14 +7,13 @@ import {deleteItemAsync} from 'expo-secure-store'
 import {useRouter} from 'expo-router'
 const styles = StyleSheet.create({
     navbar: {
-        backgroundColor: COLORS.lightBlue,
-        width: '100%',
-        padding: 10,
+        backgroundColor: COLORS.darkBlue,
         flexDirection: 'row',
-        alignItems: 'center',
         flex: 1,
-        justifyContent: 'space-between'
-
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 10
     }
 })
 const Navbar = () => {
@@ -27,8 +26,8 @@ const Navbar = () => {
     }
     return (
         <View style={styles.navbar}>
-            <Logo style={{ width: 50, height: 50 }} />
-            <Button buttonStyle={{backgroundColor: COLORS.darkBlue, padding: 10,}} textStyle={{color: COLORS.white, fontWeight: 'bold',  fontSize: 20}} title={'Log Out'} handler={logOut}/>
+            <Logo style={{ width: 60, height: 60 }} />
+            <Button buttonStyle={{ borderRadius: 10, backgroundColor: COLORS.lightGreen, padding: 10,}} textStyle={{color: COLORS.darkBlue, fontWeight: 'bold',  fontSize: 20}} title={'Log Out'} handler={logOut}/>
         </View>
     )
 }

@@ -1,20 +1,21 @@
 import React from 'react'
 import { Text, StyleSheet, View, Dimensions } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { COLORS } from '../../COLORS'
-import { Link } from 'expo-router'
 import Navbar from '../../components/Navbar'
-import Calendar from '../../components/Calendar'
 import CalendarEvents from '../../components/calendar/CalendarEvents'
 import BottomNav from '../../components/BottomNav'
 import Quote from '../../components/Quote'
 const styles = StyleSheet.create({
   screen: {
-    width: '100%',
+    width: Dimensions.get('screen').width,
     height: Dimensions.get('screen').height,
-    backgroundColor: COLORS.darkBlue,
+    backgroundColor: COLORS.lightBlue,
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 10,
+    flex: 1
+
   },
   text: {
     color: COLORS.lightGreen,
@@ -35,11 +36,9 @@ const Home = () => {
   return (
     <View style={styles.screen}>
       <Navbar />
-      <View style={{flex: 12, width: Dimensions.get('screen').width}}>
-        <CalendarEvents/>
-        <Quote/>
-        <BottomNav/>
-      </View>
+      <CalendarEvents />
+      <Quote />
+      <BottomNav />
     </View>
   )
 }

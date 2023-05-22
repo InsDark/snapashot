@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import {getItemAsync, deleteItemAsync} from 'expo-secure-store'
 import Auth from './auth'
 import Home from './home'
-import { View, Text } from 'react-native'
 
 const Index = () => {
   const [MainComponent, setMainComponent] = useState()
@@ -24,7 +23,7 @@ const Index = () => {
     getAuth()
   },[])
   return (
-    <SafeAreaView >
+    <SafeAreaView style={{ height: '100%'}}>
       {MainComponent}
     </SafeAreaView>
   )

@@ -1,15 +1,13 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import {  View } from 'react-native'
 import { AntDesign, FontAwesome } from '@expo/vector-icons'
 import { COLORS } from '../COLORS'
 import { useRouter } from 'expo-router'
-const moveTo = (e) => {
 
-}
 const BottomNav = () => {
   const router = useRouter()
   return (
-    <View style={{ flexDirection: 'row', justifyContent: 'space-around', flex: 2, width: '100%', backgroundColor: COLORS.lightGreen }}>
+    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', width: '100%', backgroundColor: COLORS.lightGreen }}>
 
       <View>
         <AntDesign.Button  onPress={() => {router.push('/')}}   size={25} style={{ flexDirection: 'column' }} backgroundColor={COLORS.lightGreen} color={COLORS.darkBlue} name='home'>Home</AntDesign.Button>

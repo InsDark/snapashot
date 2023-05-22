@@ -41,7 +41,7 @@ const CalendarEvents = () => {
         }
     }), [])
     return (
-        <View style={{ flex: 5 }}>
+        <View style={{ flex: 5, backgroundColor: COLORS.darkBlue, width: '95%', padding: 10 }}>
             <Text style={styles.text}>Today's Events</Text>
             {events.length > 0 ? <EventsContainer events={events} /> :
                 <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10}}>
