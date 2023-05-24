@@ -3,7 +3,6 @@ import { View, StyleSheet } from 'react-native'
 import Logo from './Logo'
 import {FontAwesome} from '@expo/vector-icons'
 import { COLORS } from '../COLORS'
-import {deleteItemAsync} from 'expo-secure-store'
 import {useRouter} from 'expo-router'
 const styles = StyleSheet.create({
     navbar: {
@@ -18,12 +17,6 @@ const styles = StyleSheet.create({
 })
 const Navbar = () => {
     const router = useRouter()
-    const logOut = async() => {
-        const res = await deleteItemAsync('auth')
-        console.log(res)
-        router.replace('/')
-        return
-    }
     return (
         <View style={styles.navbar}>
             <Logo style={{ width: 60, height: 60 }} />

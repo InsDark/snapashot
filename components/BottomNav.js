@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
 import { View } from 'react-native'
 import { AntDesign, Entypo } from '@expo/vector-icons'
 import { COLORS } from '../COLORS'
 import { useRouter } from 'expo-router'
-
+import {navStore} from './../helpers/stores/NavStore'
 const BottomNav = () => {
-  const [currentRoute, setCurrentRoute] = useState('Home')
+  const {currentRoute, setCurrentRoute} = navStore(state => state)
   const router = useRouter()
   return (
     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', width: '100%', backgroundColor: COLORS.lightGreen }}>
 
       <View>
-        <AntDesign.Button iconStyle={{ marginRight: 0 }} onPress={() => { router.push('/') }} size={25} style={{ flexDirection: 'column' }} backgroundColor={currentRoute == 'Home' ? COLORS.darkBlue : COLORS.lightGreen} color={currentRoute == 'Home' ? COLORS.white : COLORS.darkBlue} name='home'>Home</AntDesign.Button>
+        <AntDesign.Button iconStyle={{ marginRight: 0 }} onPress={() => { setCurrentRoute('Home') 
+        router.push('/') }} size={25} style={{ flexDirection: 'column' }} backgroundColor={currentRoute == 'Home' ? COLORS.darkBlue : COLORS.lightGreen} color={currentRoute == 'Home' ? COLORS.white : COLORS.darkBlue} name='home'>Home</AntDesign.Button>
       </View>
 
       <View>
