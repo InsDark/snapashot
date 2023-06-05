@@ -7,6 +7,9 @@ import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { COLORS } from '../../COLORS'
 import EventsContainer from './EventsContainer'
 import Button from '../Button'
+import {ModalStore} from './../../helpers/stores/ModalStore'
+import EventMaker from './EventMaker'
+import { toggleModal } from '../../helpers/calendar/showModal'
 
 const styles = StyleSheet.create({
     text: {
@@ -18,6 +21,7 @@ const styles = StyleSheet.create({
 })
 
 const CalendarEvents = () => {
+    const {setModalVisible, modalVisible} = ModalStore(state => state)
     dayjs.extend(customParseFormat)
     const [events, setEvents] = useState([])
     useEffect((() => {
@@ -42,11 +46,12 @@ const CalendarEvents = () => {
     }), [])
     return (
         <View style={{ flex: 5, backgroundColor: COLORS.darkBlue, width: '95%', padding: 10 }}>
+            <EventMaker/>
             <Text style={styles.text}>Today's Events</Text>
             {events.length > 0 ? <EventsContainer events={events} /> :
                 <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10}}>
                     <Text style={{ ...styles.text, color: COLORS.white }}>No events available</Text>
-                    <Button buttonStyle={{backgroundColor: COLORS.lightGreen, padding: 8, borderRadius: 5}} textStyle={{color: COLORS.darkBlue, fontSize: 16, fontWeight: 'bold'}} title={'Add Event'}/>
+                    <Button handler={()=> toggleModal(setModalVisible, modalVisible)} buttonStyle={{backgroundColor: COLORS.lightGreen, padding: 8, borderRadius: 5}} textStyle={{color: COLORS.darkBlue, fontSize: 16, fontWeight: 'bold'}} title={'Add Event'}/>
                 </View>}
         </View>
     )

@@ -11,17 +11,16 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.lightBlue,
     flex: 1,
     height: '100%',
-    gap: 10
+    gap: 10,
+    alignItems: 'center'
   }
 })
 const calendar = () => {
   return (
     <SafeAreaView style={styles.main}>
       <Navbar />
-      <View style={{flex: 11, alignItems: 'center'}}>
         <Calendar />
         <CalendarEvents />
-      </View>
       <BottomNav />
     </SafeAreaView>
   )
