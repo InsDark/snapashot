@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { db } from '../../firebase'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import dayjs from 'dayjs'
+import {getItemAsync} from 'expo-secure-store'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { COLORS } from '../../COLORS'
 import EventsContainer from './EventsContainer'
@@ -28,13 +29,23 @@ const CalendarEvents = () => {
         try {
 
             const getUserEvents = async () => {
-                const today = dayjs().format('YYYY-MM-DD')
+                const today = dayjs()
 
-                const q = query(collection(db, 'matoshurtadodiegoaquiles@gmail.com'), where('date', '==', today))
+                const {day, month, year} = {
+                    day : today.get('date'),
+                    month : today.get('month'),
+                    year : today.get('year')
+                }
+
+                const todayTimeStamp = new Date(year, month , day).getTime()
+                const auth = await getItemAsync('auth')
+                const {userEmail} = JSON.parse(auth)
+                const q = query(collection(db, 'events'), where('owner', '==',  userEmail), where('date', '>=', todayTimeStamp))
                 const todayEvents = await getDocs(q)
-
-                if (!todayEvents) return
-                setEvents(todayEvents.docs)
+                if (todayEvents.size == 0) return
+                const generalEvents = []
+                todayEvents.forEach(doc => generalEvents.push(doc.data()))
+                setEvents(generalEvents)
 
 
             }
