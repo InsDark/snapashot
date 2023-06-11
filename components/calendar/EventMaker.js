@@ -3,15 +3,17 @@ import { ModalStore } from './../../helpers/stores/ModalStore'
 import { COLORS } from '../../COLORS'
 import { EventStore } from './../../helpers/stores/EventStore'
 import DatePicker from '@react-native-community/datetimepicker'
-import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { AntDesign, MaterialIcons, Feather } from '@expo/vector-icons'
 import { useState } from 'react'
 import Button from '../Button'
+import {useRouter} from 'expo-router'
 import { addEvent } from '../../helpers/calendar/addEvent'
 const EventMaker = () => {
     const { modalVisible, setModalVisible } = ModalStore(state => state)
     const date = new Date()
     const { eventTitle, setEventDate, eventDate, setEventTitle, eventDescription, setEventDescription } = EventStore(state => state)
     const [showDatePicker, setShowDatePicker] = useState(false)
+    const router = useRouter()
     return (
 
         <Modal
@@ -23,7 +25,13 @@ const EventMaker = () => {
             <View style={{ backgroundColor: COLORS.lightBlue, flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
                 <View style={{ backgroundColor: COLORS.darkBlue, padding: 10, width: '70%', gap: 20 }}>
-
+                    <View style={{ flexDirection: 'row', backgroundColor: COLORS.lightBlue, alignItems: 'center' }}>
+                        <Feather.Button name="arrow-left" style={{paddingRight: 0, backgroundColor: COLORS.lightBlue,}} color={COLORS.lightGreen} onPress={() => {
+                            router.push('/')
+                            setModalVisible(!modalVisible)
+                        }} />
+                        <Text style={{color: COLORS.lightGreen, fontWeight: 'bold'}}>Create Task</Text>
+                    </View>
                     <View style={{ gap: 10 }}>
 
                         <MaterialIcons.Button style={{ backgroundColor: COLORS.lightBlue }} color={COLORS.lightGreen} name='label'>

@@ -20,7 +20,6 @@ const calendar = () => {
     <SafeAreaView style={styles.main}>
       <Navbar />
         <Calendar />
-        <CalendarEvents />
       <BottomNav />
     </SafeAreaView>
   )

@@ -11,6 +11,7 @@ import Button from '../Button'
 import {ModalStore} from './../../helpers/stores/ModalStore'
 import EventMaker from './EventMaker'
 import { toggleModal } from '../../helpers/calendar/showModal'
+import { CalendarStore } from '../../helpers/stores/CalendarStore'
 
 const styles = StyleSheet.create({
     text: {
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
 const CalendarEvents = () => {
     const {setModalVisible, modalVisible} = ModalStore(state => state)
     dayjs.extend(customParseFormat)
-    const [events, setEvents] = useState([])
+    const {calendarEvents, setCalendarEvents, setMarkedDays} = CalendarStore(state => state)
     useEffect((() => {
         try {
 
@@ -44,8 +45,14 @@ const CalendarEvents = () => {
                 const todayEvents = await getDocs(q)
                 if (todayEvents.size == 0) return
                 const generalEvents = []
-                todayEvents.forEach(doc => generalEvents.push(doc.data()))
-                setEvents(generalEvents)
+                const markedDays = new Set()
+                todayEvents.forEach(doc => {
+                    generalEvents.push(doc.data())
+                    const {date} = doc.data()
+                    markedDays.add(date)
+                })
+                setCalendarEvents(generalEvents)
+                setMarkedDays(markedDays)
 
 
             }
@@ -59,7 +66,7 @@ const CalendarEvents = () => {
         <View style={{ flex: 5, backgroundColor: COLORS.darkBlue, width: '95%', padding: 10 }}>
             <EventMaker/>
             <Text style={styles.text}>Today's Events</Text>
-            {events.length > 0 ? <EventsContainer events={events} /> :
+            {calendarEvents.length > 0 ? <EventsContainer events={calendarEvents} /> :
                 <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10}}>
                     <Text style={{ ...styles.text, color: COLORS.white }}>No events available</Text>
                     <Button handler={()=> toggleModal(setModalVisible, modalVisible)} buttonStyle={{backgroundColor: COLORS.lightGreen, padding: 8, borderRadius: 5}} textStyle={{color: COLORS.darkBlue, fontSize: 16, fontWeight: 'bold'}} title={'Add Event'}/>

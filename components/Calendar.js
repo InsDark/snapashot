@@ -1,54 +1,68 @@
-import React, { useState } from 'react'
-import { View, Text, StyleSheet, Dimensions } from 'react-native'
-import { COLORS } from '../COLORS'
-import dayjs from 'dayjs'
-import { FlatList } from 'react-native-gesture-handler'
-const styles = StyleSheet.create({
-    screen: {
-        flex: 5,
-        gap: 10,
-        marginLeft: 10,
-        marginRight: 10
-    },
-    text: {
-        fontSize: 20,
-        color: COLORS.white,
-        fontWeight: 'bold'
-    },
-    dayItem: {
-         width: `${90/7}%`, 
-         margin: 3, 
-         textAlign: 'center', 
-         color: COLORS.white, 
-         padding: 10 
-    }
-})
-
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Agenda } from 'react-native-calendars';
+import dayjs from 'dayjs';
+import { COLORS } from '../COLORS';
+import { CalendarStore } from '../helpers/stores/CalendarStore';
+import EmptyDate from './calendar/EmptyDate';
 
 const Calendar = () => {
-    const date = dayjs()
-    const month = date.format('MMMM')
-    const daysOfTheMonth = date.daysInMonth()
-    const currentDay = date.date()
-    const days = []
-    for (let day = 1; day <= daysOfTheMonth; day++) {
-        days.push(day)
+    const {markedDays} = CalendarStore(state => state)
+    const currentDate = dayjs()
+    const [items, setItems] = useState({"hi": 'fasdf'})
+    const [selected, setSelected] = useState("2023-06-11")
+    
+
+    const renderItem = (item) => {
+        return (
+            <TouchableOpacity >
+
+                <View>
+                    <Text>{item.name}</Text>
+                </View>
+
+            </TouchableOpacity>
+        );
     }
+
     return (
-        <View style={styles.screen}>
+        <View style={styles.container}>
+            <Agenda
+                style={{
+                    backgroundColor: COLORS.darkBlue
+                }}
+                theme={{
+                    backgroundColor: 'red'
+                }}
+                items={items}
+                
+                selected={currentDate.format('YYYY-MM-DD')}
 
-            <Text style={{ ...styles.text, color: COLORS.lightGreen, backgroundColor: COLORS.darkBlue, padding: 5, textAlign: 'center' }}>{month}</Text>
-
-            <FlatList
-                renderItem={({ item }) => <Text style={currentDay == item ? {...styles.dayItem, backgroundColor: COLORS.lightGreen, color: COLORS.darkBlue,fontWeight: 'bold' } : {...styles.dayItem, backgroundColor: COLORS.darkBlue}}>{item}</Text>}
-                data={days}
-                style={{  width: '100%' }}
-                numColumns={7}>
-
-            </FlatList>
-
+                
+                renderItem={renderItem}
+                renderEmptyDate={() => {
+                    return <Text>Hi</Text>
+                }}
+                renderEmptyData={() => {
+                    return <EmptyDate/>
+                }}
+                
+                rowHasChanged={(r1, r2) => {
+                    return r1.text !== r2.text;
+                }}
+                
+                
+                markedDates={markedDays}                
+            />
         </View>
-    )
+    );
 }
 
-export default Calendar
+const styles = StyleSheet.create({
+    container: {
+        flex: 10,
+        width: '100%',
+    }
+});
+
+export default Calendar;
