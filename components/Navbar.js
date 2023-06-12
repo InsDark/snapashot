@@ -20,7 +20,7 @@ const Navbar = () => {
     return (
         <View style={styles.navbar}>
             <Logo style={{ width: 60, height: 60 }} />
-            <FontAwesome.Button  onPress={() => {router.push('/')}} size={30} backgroundColor={COLORS.darkBlue} iconStyle={{marginRight: 0}}  color={COLORS.white} name='user-o'></FontAwesome.Button>
+            <FontAwesome.Button  onPress={() => {router.push('/')}} size={30} backgroundColor={COLORS.darkBlue}  iconStyle={{marginRight: 0}}  color={COLORS.lightGreen} name='user-o'></FontAwesome.Button>
         </View>
     )
 }
