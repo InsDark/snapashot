@@ -41,7 +41,6 @@ export const createNewUser = async (email, password, userName, passwordConfirm, 
 
     }
     catch (err) {
-        console.log(err)
         alert(err)
     }
 }

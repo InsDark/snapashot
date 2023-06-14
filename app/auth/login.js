@@ -52,7 +52,6 @@ const Login = () => {
 
         
     } catch (err) {
-      console.log(err)
       alert(err)
     }
   }

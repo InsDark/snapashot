@@ -8,9 +8,11 @@ import { useState } from 'react'
 import Button from '../Button'
 import {useRouter} from 'expo-router'
 import { addEvent } from '../../helpers/calendar/addEvent'
+import { CalendarStore } from '../../helpers/stores/CalendarStore'
 const EventMaker = () => {
     const { modalVisible, setModalVisible } = ModalStore(state => state)
     const date = new Date()
+    const {markedDays, setMarkedDays, calendarEvents, setCalendarEvents} = CalendarStore(state=> state)
     const { eventTitle, setEventDate, eventDate, setEventTitle, eventDescription, setEventDescription } = EventStore(state => state)
     const [showDatePicker, setShowDatePicker] = useState(false)
     const router = useRouter()
@@ -67,7 +69,17 @@ const EventMaker = () => {
                                 setShowDatePicker(!showDatePicker)
                             }}
                         />}
-                    <Button title={'Add Event'}  buttonStyle={{backgroundColor: COLORS.lightGreen, color: COLORS.darkBlue, padding: 10}} textStyle={{textAlign: 'center', fontWeight: 'bold'}} handler={() => {addEvent(eventTitle, eventDescription, eventDate, setModalVisible, modalVisible)}}/>
+                    <Button title={'Add Event'}  buttonStyle={{backgroundColor: COLORS.lightGreen, color: COLORS.darkBlue, padding: 10}} textStyle={{textAlign: 'center', fontWeight: 'bold'}} handler={async() => {
+                        
+                        
+                        await addEvent(eventTitle, eventDescription, eventDate)
+                        setModalVisible(!modalVisible)
+                        setMarkedDays({...markedDays, eventDate:{'marked' : true}})
+                        setCalendarEvents({...calendarEvents, eventDate:{ name: eventTitle, description: eventDescription}})
+                        setEventTitle('')
+                        setEventDescription('')
+
+                        }}/>
                     </View>
 
 

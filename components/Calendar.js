@@ -40,9 +40,6 @@ const Calendar = () => {
 
                 
                 renderItem={renderItem}
-                renderEmptyDate={() => {
-                    return <Text>Hi</Text>
-                }}
                 renderEmptyData={() => {
                     return <EmptyDate/>
                 }}
