@@ -41,15 +41,13 @@ const CalendarEvents = () => {
                 const queryEvents = query(collection(db, 'events'), where('owner', '==',  userEmail), where('date', '==', today))
                 const todayEvents = await getDocs(queryEvents)
                 if (todayEvents.size ) {  
-                    const generalEvents = []
+                    const generalEvents = {}
                     todayEvents.forEach(doc => {
-                        generalEvents.push(doc.data()) 
+                        const {date, title} = doc.data()
+                        generalEvents[date] = [{name: title}]
                     })
                     setCalendarEvents(generalEvents)
                 }
-
-
-
             }
             getUserEvents()
         }

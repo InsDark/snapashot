@@ -75,7 +75,7 @@ const EventMaker = () => {
                         await addEvent(eventTitle, eventDescription, eventDate)
                         setModalVisible(!modalVisible)
                         setMarkedDays({...markedDays, eventDate:{'marked' : true}})
-                        setCalendarEvents({...calendarEvents, eventDate:{ name: eventTitle, description: eventDescription}})
+                        setCalendarEvents({...calendarEvents, eventDate:[{ name: eventTitle}]})
                         setEventTitle('')
                         setEventDescription('')
 

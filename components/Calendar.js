@@ -7,13 +7,13 @@ import { CalendarStore } from '../helpers/stores/CalendarStore';
 import EmptyDate from './calendar/EmptyDate';
 
 const Calendar = () => {
-    const {markedDays} = CalendarStore(state => state)
+    const {markedDays, calendarEvents} = CalendarStore(state => state)
     const currentDate = dayjs()
-    const [items, setItems] = useState({"hi": 'fasdf'})
     const [selected, setSelected] = useState("2023-06-11")
     
 
     const renderItem = (item) => {
+        console.log(item)
         return (
             <TouchableOpacity >
 
@@ -34,11 +34,12 @@ const Calendar = () => {
                 theme={{
                     backgroundColor: 'red'
                 }}
-                items={items}
+                items={calendarEvents}
                 
                 selected={currentDate.format('YYYY-MM-DD')}
-
-                
+                onDayChange={(date) => {
+                    console.log(date)
+                }}
                 renderItem={renderItem}
                 renderEmptyData={() => {
                     return <EmptyDate/>
