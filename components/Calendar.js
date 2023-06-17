@@ -1,66 +1,38 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Agenda } from 'react-native-calendars';
+import { Text, View } from 'react-native';
+import { CalendarProvider, WeekCalendar } from 'react-native-calendars';
 import dayjs from 'dayjs';
 import { COLORS } from '../COLORS';
+import CalendarEvents from './calendar/CalendarEvents'
 import { CalendarStore } from '../helpers/stores/CalendarStore';
-import EmptyDate from './calendar/EmptyDate';
+
 
 const Calendar = () => {
-    const {markedDays, calendarEvents} = CalendarStore(state => state)
+    const { markedDays } = CalendarStore(state => state)
     const currentDate = dayjs()
-    const [selected, setSelected] = useState("2023-06-11")
-    
-
-    const renderItem = (item) => {
-        console.log(item)
-        return (
-            <TouchableOpacity >
-
-                <View>
-                    <Text>{item.name}</Text>
-                </View>
-
-            </TouchableOpacity>
-        );
-    }
-
+    const [current, setCurrent] = useState(currentDate)
     return (
-        <View style={styles.container}>
-            <Agenda
-                style={{
-                    backgroundColor: COLORS.darkBlue
-                }}
-                theme={{
-                    backgroundColor: 'red'
-                }}
-                items={calendarEvents}
-                
-                selected={currentDate.format('YYYY-MM-DD')}
-                onDayChange={(date) => {
-                    console.log(date)
-                }}
-                renderItem={renderItem}
-                renderEmptyData={() => {
-                    return <EmptyDate/>
-                }}
-                
-                rowHasChanged={(r1, r2) => {
-                    return r1.text !== r2.text;
-                }}
-                
-                
-                markedDates={markedDays}                
-            />
+        <View style={{ flex: 12 }}>
+
+            <CalendarProvider
+                date={currentDate.format('YYYY-MM-DD')}
+                showTodayButton
+                style={{}}
+            >
+
+                <Text style={{ color: COLORS.lightGreen, backgroundColor: COLORS.darkBlue, paddingTop: 10, textAlign: 'center', fontSize: 18 }}>
+                    {current.get('date')}  {current.format('MMMM')} {current.get('year')}
+                </Text>
+                <WeekCalendar theme={{ calendarBackground: COLORS.darkBlue, dayTextColor: COLORS.gray, selectedDayTextColor: COLORS.darkBlue }}
+                    onDayPress={(day) => {
+                        setCurrent(dayjs(day.dateString))
+
+                    }} enableSwipeMonths={true} markedDates={markedDays} />
+            </CalendarProvider>
+            <CalendarEvents style={{ flex: 4, backgroundColor: COLORS.darkBlue, padding: 10, justifyContent: 'center' }} />
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 10,
-        width: '100%',
-    }
-});
 
 export default Calendar;

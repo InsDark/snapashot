@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     }
 })
 
-const CalendarEvents = () => {
+const CalendarEvents = ({style}) => {
     const {setModalVisible, modalVisible} = ModalStore(state => state)
     dayjs.extend(customParseFormat)
     const {calendarEvents, setCalendarEvents, setMarkedDays} = CalendarStore(state => state)
@@ -43,8 +43,12 @@ const CalendarEvents = () => {
                 if (todayEvents.size ) {  
                     const generalEvents = {}
                     todayEvents.forEach(doc => {
+                        const {date} = doc.data()
+                        generalEvents[date] = []
+                    })
+                    todayEvents.forEach(doc => {
                         const {date, title} = doc.data()
-                        generalEvents[date] = [{name: title}]
+                        generalEvents[date].push({name: title})
                     })
                     setCalendarEvents(generalEvents)
                 }
@@ -56,10 +60,10 @@ const CalendarEvents = () => {
         }
     }), [])
     return (
-        <View style={{ flex: 5, backgroundColor: COLORS.darkBlue, width: '95%', padding: 10 }}>
+        <View style={style}>
             <Text style={styles.text}>Today's Events</Text>
             {calendarEvents.length > 0 ? <EventsContainer events={calendarEvents} /> :
-                <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10}}>
+                <View style={{ alignItems: 'center', justifyContent: 'center', gap: 10}}>
                     <Text style={{ ...styles.text, color: COLORS.white }}>No events available</Text>
                     <Button handler={()=> toggleModal(setModalVisible, modalVisible)} buttonStyle={{backgroundColor: COLORS.lightGreen, padding: 8, borderRadius: 5}} textStyle={{color: COLORS.darkBlue, fontSize: 16, fontWeight: 'bold'}} title={'Add Event'}/>
                     <EventMaker/>
