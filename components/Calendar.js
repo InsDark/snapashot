@@ -8,28 +8,26 @@ import { CalendarStore } from '../helpers/stores/CalendarStore';
 
 
 const Calendar = () => {
-    const { markedDays } = CalendarStore(state => state)
+    const { markedDays, currentDate : Current, setCurrentDate } = CalendarStore(state => state)
     const currentDate = dayjs()
-    const [current, setCurrent] = useState(currentDate)
     return (
         <View style={{ flex: 12 }}>
 
             <CalendarProvider
                 date={currentDate.format('YYYY-MM-DD')}
                 showTodayButton
-                style={{}}
             >
 
                 <Text style={{ color: COLORS.lightGreen, backgroundColor: COLORS.darkBlue, paddingTop: 10, textAlign: 'center', fontSize: 18 }}>
-                    {current.get('date')}  {current.format('MMMM')} {current.get('year')}
+                    {Current.get('date')}  {Current.format('MMMM')} {Current.get('year')}
                 </Text>
-                <WeekCalendar theme={{ calendarBackground: COLORS.darkBlue, dayTextColor: COLORS.gray, selectedDayTextColor: COLORS.darkBlue }}
+                <WeekCalendar theme={{ calendarBackground: COLORS.darkBlue, dayTextColor: COLORS.gray, selectedDayTextColor: COLORS.white, todayBackgroundColor: COLORS.lightBlue, selectedDayBackgroundColor: COLORS.gray }}
                     onDayPress={(day) => {
-                        setCurrent(dayjs(day.dateString))
+                        setCurrentDate(dayjs(day.dateString))
 
                     }} enableSwipeMonths={true} markedDates={markedDays} />
             </CalendarProvider>
-            <CalendarEvents style={{ flex: 4, backgroundColor: COLORS.darkBlue, padding: 10, justifyContent: 'center' }} />
+            <CalendarEvents style={{  flex: 4, backgroundColor: COLORS.darkBlue,  justifyContent: 'center' }} />
         </View>
     );
 }

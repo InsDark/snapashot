@@ -1,19 +1,27 @@
 import React from 'react'
-import {View, Text, ScrollView} from 'react-native'
-import dayjs from 'dayjs'
+import { Text, FlatList, View } from 'react-native'
 import { COLORS } from '../../COLORS'
-const EventsContainer = ({events}) => {
-  
+import dayjs from 'dayjs'
+const EventsContainer = ({ events, currentDate }) => {
+  const eventsFilter = events.filter(event => event.date == dayjs(currentDate).format('YYYY-MM-DD'))
   return (
-    <ScrollView>
-        {events.map((event, index) => (
-          <View style={{backgroundColor:COLORS.lightBlue, padding: 10, marginTop: 10, marginBottom: 10}} key={index}>
-            <Text style={{color: COLORS.lightGreen}}>{dayjs(event.date).format('DD/MM/YYYY')}</Text>
-            <Text style={{color: COLORS.white, fontWeight: 'bold', fontSize: 20}}>{event.title}</Text>
-            <Text style={{color: COLORS.white}}>{event.description}</Text>
+
+    <FlatList style={{ backgroundColor: COLORS.lightBlue, width: '100%' }}
+      data={eventsFilter}
+      renderItem={({ item }) => (
+        <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: COLORS.darkBlue, width: '80%', marginVertical: 10, marginRight: 'auto', marginLeft: 'auto' }}>
+          <View style={{backgroundColor: COLORS.gray, width: 10, height: 10, borderRadius: 10, marginRight: 10}}></View>
+          <View>
+            <Text style={{ color: COLORS.lightGreen, fontSize: 20, fontWeight: 'bold' }}>{item.title}</Text>
+            <Text style={{color: COLORS.white}}>
+              {item.description}
+            </Text>
           </View>
-        ))}
-    </ScrollView>
+
+        </View>
+      )}
+    >
+    </FlatList>
   )
 }
 

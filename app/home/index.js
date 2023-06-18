@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, StyleSheet, View, Dimensions } from 'react-native'
 import { COLORS } from '../../COLORS'
 import Navbar from '../../components/Navbar'
 import CalendarEvents from '../../components/calendar/CalendarEvents'
 import BottomNav from '../../components/BottomNav'
 import Quote from '../../components/Quote'
+import { getMarkedDates } from '../../helpers/calendar/getMarkedDates'
+import { CalendarStore } from '../../helpers/stores/CalendarStore'
 const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get('screen').width,
@@ -33,10 +35,17 @@ const styles = StyleSheet.create({
   }
 })
 const Home = () => {
+  const {setMarkedDays} = CalendarStore(state => state)
+    useEffect(() => {
+      const main = async() => {
+        await getMarkedDates(setMarkedDays)
+      }
+      main()
+    })
   return (
     <View style={styles.screen}>
       <Navbar />
-      <CalendarEvents />
+      <CalendarEvents style={{flex: 5, padding: 10, backgroundColor: COLORS.darkBlue}} />
       <Quote />
       <BottomNav />
     </View>
