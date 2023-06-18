@@ -11,7 +11,7 @@ const Calendar = () => {
     const { markedDays, currentDate : Current, setCurrentDate } = CalendarStore(state => state)
     const currentDate = dayjs()
     return (
-        <View style={{ flex: 12 }}>
+        <View style={{ flex: 12, gap: 20 }}>
 
             <CalendarProvider
                 date={currentDate.format('YYYY-MM-DD')}

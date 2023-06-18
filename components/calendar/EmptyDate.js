@@ -4,6 +4,7 @@ import Button from './../Button'
 import { ModalStore } from '../../helpers/stores/ModalStore'
 import EventMaker from './EventMaker'
 import { COLORS } from '../../COLORS'
+import ButtonTaskMaker from './ButtonTaskMaker'
 const EmptyDate = () => {
     const { modalVisible, setModalVisible } = ModalStore(state => state)
     return (
@@ -20,7 +21,7 @@ const EmptyDate = () => {
 
                 </Text>
             </View>
-            <Button handler={() => { setModalVisible(!modalVisible) }} title="+" buttonStyle={{ position: 'absolute', backgroundColor: COLORS.lightBlue, width: 50, height: 50, alignItems: 'center', padding: 10, borderRadius: 99999999, right: 15, bottom: 15 }} textStyle={{ color: COLORS.white, fontWeight: 'bold', fontSize: 20 }} />
+            <ButtonTaskMaker modalVisible={modalVisible} setModalVisible={setModalVisible}/>
             <EventMaker />
         </View>
     )

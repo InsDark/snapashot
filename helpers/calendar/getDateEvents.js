@@ -8,7 +8,6 @@ const getDateEvents = async ({currentDate,  userEmail, setCalendarEvents, calend
         return event.date == today
     })
     if(eventsForCurrentDate.length > 0) return;
-    console.log('hi')
     const queryEvents = query(collection(db, 'events'), where('owner', '==', userEmail), where('date', '==', today ))
     const todayEvents = await getDocs(queryEvents)
     if (todayEvents.size) {
