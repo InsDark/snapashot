@@ -29,7 +29,7 @@ const CalendarEvents = ({ style }) => {
     }), [currentDate])
     return (
         <View style={style}>
-            {calendarEvents ? <View>
+            {calendarEvents.length > 0 ? <View>
                 <Text style={{color: COLORS.lightGreen, fontSize: 22, fontWeight: 'bold', backgroundColor: COLORS.lightBlue, textAlign: 'center'}}>Events</Text>
                 <EventsContainer events={calendarEvents} currentDate={currentDate} />
             </View>
