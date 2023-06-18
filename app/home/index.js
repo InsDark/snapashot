@@ -45,7 +45,7 @@ const Home = () => {
   return (
     <View style={styles.screen}>
       <Navbar />
-      <CalendarEvents style={{flex: 5, padding: 10, backgroundColor: COLORS.darkBlue}} />
+      <CalendarEvents style={{ width: '100%', flex: 5, backgroundColor: COLORS.darkBlue}} />
       <Quote />
       <BottomNav />
     </View>
