@@ -12,7 +12,6 @@ export default function App() {
     const [permission, requestPermission] = Camera.useCameraPermissions();
     const cameraRef = useRef();
     const [zoom, setZoom] = useState(0)
-    
     useEffect(() => {
         requestPermission()
         requestPermissionsAsync()
