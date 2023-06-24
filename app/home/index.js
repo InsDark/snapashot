@@ -7,6 +7,7 @@ import BottomNav from '../../components/BottomNav'
 import Quote from '../../components/Quote'
 import { getMarkedDates } from '../../helpers/calendar/getMarkedDates'
 import { CalendarStore } from '../../helpers/stores/CalendarStore'
+import { getGallerySections } from '../../helpers/camera/getGallerySections'
 const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get('screen').width,
@@ -39,9 +40,10 @@ const Home = () => {
     useEffect(() => {
       const main = async() => {
         await getMarkedDates(setMarkedDays)
+        await getGallerySections()
       }
       main()
-    })
+    }, [])
   return (
     <View style={styles.screen}>
       <Navbar />

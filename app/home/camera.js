@@ -1,7 +1,13 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import Camera  from './../../components/camera/Camera'
+import { cameraStore } from '../../components/camera/CameraStore'
+import { useRouter } from 'expo-router'
 const CameraPage = () => {
+  const { gallerySections } = cameraStore(state => state)
+  const router = useRouter()
+  if(gallerySections.length == 0) {
+    router.replace('/home/gallery')
+  }
   return (
         <Camera></Camera>
   )
