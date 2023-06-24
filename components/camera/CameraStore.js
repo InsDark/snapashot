@@ -6,6 +6,8 @@ export const cameraStore = create((set) => ({
     cameraRef: null, 
     photo: null, 
     gallerySections: [],
+    gallerySection: '',
+    setGallerySection:  (section) => set({gallerySection: section}),
     setGallerySections: (newGallerySections) => set({gallerySections: newGallerySections}),
     setPhoto: (newPhoto) => set({photo: newPhoto}),
     setCameraRef: (camRef) => set(() => ({cameraRef: camRef})),

@@ -1,5 +1,6 @@
 import React from 'react'
 import { View , StyleSheet, Text } from 'react-native'
+import SectionsPicker from '../gallery/SectionsPicker'
 
 const Navbar = () => {
     const styles = StyleSheet.create({
@@ -9,7 +10,6 @@ const Navbar = () => {
             width: '100%',
             color: 'white',
             justifyContent: 'center',
-            alignItems: 'center',
         },
         text: {
             color: 'white',
@@ -18,7 +18,7 @@ const Navbar = () => {
     })
   return (
     <View style={styles.navbar}>
-        <Text  style={styles.text} >Test Mode</Text>
+        <SectionsPicker/>
     </View>
   )
 }

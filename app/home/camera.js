@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Camera  from './../../components/camera/Camera'
 import { cameraStore } from '../../components/camera/CameraStore'
 import { useRouter } from 'expo-router'
+import { getGallerySections } from '../../helpers/camera/getGallerySections'
 const CameraPage = () => {
-  const { gallerySections } = cameraStore(state => state)
+  const { gallerySections, setGallerySections } = cameraStore(state => state)
   const router = useRouter()
-  if(gallerySections.length == 0) {
-    router.replace('/home/gallery')
-  }
+  useEffect(() => {
+    const main = async() => {
+      const gallerySectionData = await getGallerySections()
+      if(!gallerySectionData.length) {
+        return router.push('home/gallery')
+      }
+      setGallerySections(gallerySectionData)
+    } 
+    main()
+  }, [])
+
   return (
         <Camera></Camera>
   )
