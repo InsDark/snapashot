@@ -21,6 +21,9 @@ const CameraActions = () => {
     setType(type === CameraType.back ? CameraType.front : CameraType.back);
   }
   const takePicture = async () => {
+    if(gallerySection === '') {
+      return alert('Please select a gallery section')
+    }
     try {
 
       let options = {

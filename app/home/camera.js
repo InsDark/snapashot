@@ -4,15 +4,17 @@ import { cameraStore } from '../../components/camera/CameraStore'
 import { useRouter } from 'expo-router'
 import { getGallerySections } from '../../helpers/camera/getGallerySections'
 const CameraPage = () => {
-  const { gallerySections, setGallerySections } = cameraStore(state => state)
+  const { fetchedSections, setFetchedSections, setGallerySections } = cameraStore(state => state)
   const router = useRouter()
   useEffect(() => {
+    if(fetchedSections) return 
     const main = async() => {
       const gallerySectionData = await getGallerySections()
       if(!gallerySectionData.length) {
         return router.push('home/gallery')
       }
       setGallerySections(gallerySectionData)
+      setFetchedSections(true)
     } 
     main()
   }, [])

@@ -5,6 +5,8 @@ export const cameraStore = create((set) => ({
     type: CameraType.back,
     cameraRef: null, 
     photo: null, 
+    fetchedSections: false,
+    setFetchedSections: (state)  => set({fetchedSections: state}),
     gallerySections: [],
     gallerySection: '',
     setGallerySection:  (section) => set({gallerySection: section}),
