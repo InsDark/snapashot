@@ -6,7 +6,7 @@ if (typeof atob === 'undefined') {
 }
 
 import { View, StyleSheet } from 'react-native'
-import { saveToLibraryAsync } from 'expo-media-library'
+import {  createAlbumAsync, createAssetAsync } from 'expo-media-library'
 import uuid from 'react-native-uuid'
 import { FontAwesome, Entypo, Foundation } from '@expo/vector-icons'
 import { cameraStore } from './CameraStore'
@@ -14,10 +14,9 @@ import { ref, uploadBytes } from 'firebase/storage'
 import { CameraType } from 'expo-camera'
 import { storage } from '../../firebase'
 import { getItemAsync } from 'expo-secure-store';
-import { getBlobFromUri } from '../../helpers/camera/getBlobFromUri';
 
 const CameraActions = () => {
-  const { type, setType, cameraRef, gallerySection } = cameraStore(state => state)
+  const { type, setType, cameraRef, gallerySection, gallerySections } = cameraStore(state => state)
   const toggleCameraType = () => {
     setType(type === CameraType.back ? CameraType.front : CameraType.back);
   }
@@ -29,7 +28,10 @@ const CameraActions = () => {
         base64: true,
         exif: false
       }
+
       const newPhoto = await cameraRef.current.takePictureAsync(options)
+      const asset = await createAssetAsync(newPhoto.uri)
+      await createAlbumAsync(gallerySections[gallerySection], asset)
       const { userEmail } = JSON.parse(await getItemAsync('auth'))
 
       const getFileBlob = function (url, cb) {
@@ -41,7 +43,7 @@ const CameraActions = () => {
         });
         xhr.send();
       };
-      
+
       const imgName = uuid.v4()
       const userPictures = ref(storage, `${userEmail}/${gallerySection}/${imgName}`)
       getFileBlob(newPhoto.uri, blob => {
