@@ -1,8 +1,14 @@
 import React from 'react'
 import {Image} from 'react-native'
-const Logo = ({style, uri}) => {
+import {Asset} from 'expo-asset'
+const Logo = ({style}) => {
+  const [logoAssetUri, setLogoAssetUri] = React.useState('./')
+  Asset.loadAsync( require('./../icons/logo.jpg')).then(asset => {
+    setLogoAssetUri(asset[0].localUri)
+  })
+
   return (
-    <Image style={style}  source={{uri: 'https://clipground.com/images/long-shutter-clipart-3.jpg'}}></Image>
+    <Image style={style} source={{uri:logoAssetUri}}></Image>
 
   )
 }

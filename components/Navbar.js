@@ -1,9 +1,7 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import Logo from './Logo'
-import {FontAwesome} from '@expo/vector-icons'
 import { COLORS } from '../COLORS'
-import {useRouter} from 'expo-router'
 const styles = StyleSheet.create({
     navbar: {
         backgroundColor: COLORS.darkBlue,
@@ -11,16 +9,20 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 10
+        justifyContent: 'center',
+        padding: 10,
+        gap: 10
+    },
+    title: {
+        color: COLORS.lightGreen,
+        fontSize: 25
     }
 })
 const Navbar = () => {
-    const router = useRouter()
     return (
         <View style={styles.navbar}>
-            <Logo style={{ width: 60, height: 60 }} />
-            <FontAwesome.Button  onPress={() => {router.push('/')}} size={30} backgroundColor={COLORS.darkBlue}  iconStyle={{marginRight: 0}}  color={COLORS.lightGreen} name='user-o'></FontAwesome.Button>
+            <Logo style={{ width: 55, height: 55 }} />
+            <Text style={styles.title}>SnapAShot</Text>
         </View>
     )
 }
