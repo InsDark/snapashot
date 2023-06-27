@@ -1,7 +1,8 @@
 {
   "expo": {
     "android": {
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "package": "com.snapashot"
     },
     "ios": {
       "googleServicesFile": "./GoogleService-Info.plist"
@@ -10,8 +11,22 @@
     "web": {
       "bundler": "metro"
     },
-    "plugins": ["@react-native-google-signin/google-signin"],
-    "name": "snapashot",
-    "slug": "snapashot"
+    "plugins": [
+      "@react-native-google-signin/google-signin"
+    ],
+    "name": "Snapashot",
+    "slug": "snapashot",
+    "splash": {
+      "backgroundColor": "#241e35",
+      "image": "./assets/icon.png",
+      "resizeMode": "contain"
+    },
+    "icon": "./assets/icon.png",
+    "extra": {
+      "eas": {
+        "projectId": "2bf60dcd-bb63-4075-8ba4-ae50bf30caf6"
+      }
+    },
+    "owner": "aamon"
   }
 }

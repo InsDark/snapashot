@@ -3,7 +3,7 @@ import {Image} from 'react-native'
 import {Asset} from 'expo-asset'
 const Logo = ({style}) => {
   const [logoAssetUri, setLogoAssetUri] = React.useState('./')
-  Asset.loadAsync( require('./../icons/logo.jpg')).then(asset => {
+  Asset.loadAsync( require('./../assets/icon.png')).then(asset => {
     setLogoAssetUri(asset[0].localUri)
   })
 

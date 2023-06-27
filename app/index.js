@@ -1,10 +1,13 @@
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useEffect, useState } from 'react'
 import {getItemAsync, deleteItemAsync} from 'expo-secure-store'
+import SplashScreen from 'expo-splash-screen'
 import Auth from './auth'
 import Home from './home'
 
 const Index = () => {
+  SplashScreen.preventAutoHideAsync()
+  setTimeout(SplashScreen.hideAsync, 2000)
   const [MainComponent, setMainComponent] = useState()
   useEffect(() => {
     const getAuth = async () => {
@@ -19,6 +22,7 @@ const Index = () => {
         setMainComponent(<Home/>)
         return
       }
+      setMainComponent(<Auth/>)
     }
     getAuth()
   },[])
