@@ -18,15 +18,15 @@
     "slug": "snapashot",
     "splash": {
       "backgroundColor": "#241e35",
-      "image": "./assets/icon.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain"
     },
     "icon": "./assets/icon.png",
     "extra": {
       "eas": {
-        "projectId": "2bf60dcd-bb63-4075-8ba4-ae50bf30caf6"
+        "projectId": "a156ada0-ba90-447c-b618-36d5ae4039f6"
       }
     },
-    "owner": "aamon"
+    "owner": "odinfreis"
   }
 }
