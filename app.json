@@ -24,9 +24,9 @@
     "icon": "./assets/icon.png",
     "extra": {
       "eas": {
-        "projectId": "a156ada0-ba90-447c-b618-36d5ae4039f6"
+        "projectId": "ef982988-a938-418b-b1bc-158c887b3d24"
       }
     },
-    "owner": "odinfreis"
+    "owner": "dieres"
   }
 }
