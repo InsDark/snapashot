@@ -5,17 +5,17 @@ import { COLORS } from '../../COLORS'
 import ButtonSectionMaker from './ButtonSectionMaker'
 import SectionMaker from './SectionMaker'
 
-const SectionsPicker = () => {
+const SectionsPicker = ({styles}) => {
     const { gallerySections, gallerySection, setGallerySection } = cameraStore(state => state)
     return (
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', margin: 10 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', backgroundColor: COLORS.darkBlue, width: '100%', ...styles}}>
 
             <SelectDropdown
                 data={gallerySections}
                 defaultButtonText={gallerySections.length == 0 ? 'Click the right button to add a section' : null}
                 defaultValueByIndex={gallerySection === '' ? 0 : gallerySection}
                 style={{ flex: 1 }}
-                buttonStyle={{ backgroundColor: COLORS.darkBlue }}
+                buttonStyle={{ backgroundColor: COLORS.lightBlue }}
                 buttonTextStyle={{ color: COLORS.white }}
                 renderDropdownIcon={() => { return }}
                 disabled={gallerySections.length == 0 ? true : false}

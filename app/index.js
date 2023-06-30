@@ -5,7 +5,6 @@ import { preventAutoHideAsync, hideAsync } from 'expo-splash-screen'
 import Auth from './auth'
 import Home from './home'
 import 'expo-dev-client'
-import { Dimensions } from 'react-native'
 import { View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 const Index = () => {

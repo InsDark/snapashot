@@ -2,6 +2,7 @@ import { View } from 'react-native'
 import { COLORS } from '../../COLORS'
 import SectionsPicker from './SectionsPicker'
 import GalleryViewer from './GalleryViewer'
+import Separator from './../Separator'
 import { useEffect } from 'react'
 import { useRouter } from 'expo-router'
 import { cameraStore } from '../camera/CameraStore'
@@ -11,6 +12,7 @@ const Gallery = () => {
   const router = useRouter()
   useEffect(() => {
     if(fetchedSections) return 
+  
     const main = async() => {
       const gallerySectionData = await getGallerySections()
       if(!gallerySectionData.length) {
@@ -22,7 +24,7 @@ const Gallery = () => {
     main()
   }, [])
   return (
-    <View style={{flex: 12, backgroundColor: COLORS.lightBlue}}>
+    <View style={{flex: 1, backgroundColor: COLORS.darkBlue}}>
         <SectionsPicker/>
         <GalleryViewer/>
     </View>

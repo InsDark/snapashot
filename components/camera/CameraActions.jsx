@@ -14,6 +14,7 @@ import { ref, uploadBytes } from 'firebase/storage'
 import { CameraType } from 'expo-camera'
 import { storage } from '../../firebase'
 import { getItemAsync } from 'expo-secure-store';
+import { COLORS } from '../../COLORS';
 
 const CameraActions = () => {
   const { type, setType, cameraRef, gallerySection, gallerySections } = cameraStore(state => state)
@@ -61,9 +62,9 @@ const CameraActions = () => {
   }
   return (
     <View style={styles.navbar}>
-      <FontAwesome.Button size={30} iconStyle={{ marginRight: 0 }} name='arrow-left' style={styles.button}></FontAwesome.Button>
-      <Entypo.Button onPress={takePicture} size={30} iconStyle={{ marginRight: 0 }} style={styles.button} name='controller-record' />
-      <Foundation.Button onPress={toggleCameraType} size={30} iconStyle={{ marginRight: 0 }} style={styles.button} name='loop' />
+      <FontAwesome.Button color={COLORS.gray} size={30} iconStyle={{ marginRight: 0 }} name='arrow-left' style={styles.button}></FontAwesome.Button>
+      <Entypo.Button onPress={takePicture} color={COLORS.gray} size={30} iconStyle={{ marginRight: 0 }} style={styles.button} name='controller-record' />
+      <Foundation.Button color={COLORS.gray} onPress={toggleCameraType} size={30} iconStyle={{ marginRight: 0 }} style={styles.button} name='loop' />
     </View>
   )
 }

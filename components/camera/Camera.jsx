@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions, SafeAreaView } from 'react-native';
 import { requestPermissionsAsync } from 'expo-media-library'
 import { PinchGestureHandler } from 'react-native-gesture-handler'
 import { Camera } from 'expo-camera'
@@ -6,6 +6,9 @@ import { cameraStore } from './CameraStore'
 import CameraActions from './CameraActions';
 import Navbar from './Navbar';
 import { useEffect, useRef, useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { COLORS } from '../../COLORS';
+import SectionsPicker from '../gallery/SectionsPicker';
 export default function App() {
     const { type, setCameraRef } = cameraStore(state => state)
     const phoneDimentions = Dimensions.get('window')
@@ -36,18 +39,18 @@ export default function App() {
             alignItems: 'center'
         },
         container: {
-            height: '100%',
+            flex: 1,
             width: phoneDimentions.width,
-            backgroundColor: '#fff',
+            backgroundColor: COLORS.darkBlue,
             alignItems: 'center',
             marginEnd: 0,
             justifyContent: 'center',
-
+            width: '100%'
         },
     });
     return (
         <View style={styles.container}>
-            <Navbar />
+            <SectionsPicker styles={{padding: 10}}/>
             <PinchGestureHandler onGestureEvent={(e) => changeZoom(e)}>
                 <Camera zoom={zoom}  autoFocus={true} ref={cameraRef} ratio='4:3' style={styles.camera} type={type}>
                     <View style={styles.buttonContainer}>
@@ -55,6 +58,7 @@ export default function App() {
                 </Camera>
             </PinchGestureHandler>
             <CameraActions />
+            <StatusBar style='light'/>
         </View>
     );
 

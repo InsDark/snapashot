@@ -5,28 +5,30 @@ import dayjs from 'dayjs';
 import { COLORS } from '../COLORS';
 import CalendarEvents from './calendar/CalendarEvents'
 import { CalendarStore } from '../helpers/stores/CalendarStore';
+import Separator from './Separator';
 
 
 const Calendar = () => {
     const { markedDays, currentDate : Current, setCurrentDate } = CalendarStore(state => state)
     const currentDate = dayjs()
     return (
-        <View style={{ flex: 12, gap: 20 }}>
+        <View style={{ flex: 1 }}>
 
             <CalendarProvider
                 date={currentDate.format('YYYY-MM-DD')}
-                showTodayButton
+                showTodayButton={true}
             >
 
-                <Text style={{ color: COLORS.lightGreen, backgroundColor: COLORS.darkBlue, paddingTop: 10, textAlign: 'center', fontSize: 18 }}>
+                <Text style={{ color: COLORS.white, backgroundColor: COLORS.darkBlue, paddingTop: 10, textAlign: 'center', fontSize: 18 }}>
                     {Current.get('date')}  {Current.format('MMMM')} {Current.get('year')}
                 </Text>
                 <WeekCalendar theme={{ calendarBackground: COLORS.darkBlue, dayTextColor: COLORS.gray, selectedDayTextColor: COLORS.white, todayBackgroundColor: COLORS.lightBlue, selectedDayBackgroundColor: COLORS.gray }}
                     onDayPress={(day) => {
                         setCurrentDate(dayjs(day.dateString))
 
-                    }} enableSwipeMonths={true} markedDates={markedDays} />
+                    }} markedDates={markedDays} />
             </CalendarProvider>
+            <Separator/>
             <CalendarEvents style={{  flex: 4, backgroundColor: COLORS.darkBlue,  justifyContent: 'center' }} />
         </View>
     );

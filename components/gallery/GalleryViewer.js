@@ -25,7 +25,7 @@ const GalleryViewer = () => {
     main()
   }, [gallerySection])
   return (
-    <View style={{backgroundColor: COLORS.lightBlue, flex: 1}}>
+    <View style={{backgroundColor: COLORS.lightBlue,  flex: 1}}>
       {sectionImages.length > 0 ? <GalleryContainer images={sectionImages} /> : <EmptyGallery/> }
     </View>
   )
