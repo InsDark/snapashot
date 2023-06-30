@@ -5,15 +5,17 @@ import { COLORS } from '../COLORS'
 
 const styles = StyleSheet.create({
     main: {
-        width: '95%',
-        padding: 10,
+        width: '100%',
         backgroundColor: COLORS.darkBlue,
-        flex: 5
+        justifyContent: 'center',
+        display: 'flex',
+        gap: 10,
+        flexDirection: 'column'
 
     },
     title: {
-        color: COLORS.lightGreen,
-        fontSize: 20,
+        color: COLORS.white,
+        fontSize: 22,
         textAlign: 'center',
         fontWeight: 'bold',
     }
@@ -29,11 +31,8 @@ const Quote = () => {
     }), [])
     return (
         <View style={styles.main}>
-            <Text style={styles.title}>Today's Quote</Text>
-            <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-                <Text style={{ color: COLORS.white, fontSize: 25, fontWeight: 'bold' }}>{quote}</Text>
-
-            </View>
+            <Text style={styles.title}>GET INSPIRED</Text>
+            <Text style={{ color: COLORS.gray, fontSize: 18,  textAlign: 'center' }}>{quote}</Text>
         </View>
     )
 }

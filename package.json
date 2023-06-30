@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "expo-cli start --tunnel",
+    "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web"
@@ -11,14 +11,16 @@
     "@react-native-google-signin/google-signin": "^9.0.2",
     "base-64": "^1.0.0",
     "dayjs": "^1.11.7",
-    "expo": "^48.0.7",
+    "expo": "~48.0.18",
+    "expo-asset": "~8.9.1",
     "expo-camera": "~13.2.1",
     "expo-constants": "~14.2.1",
+    "expo-dev-client": "~2.2.1",
     "expo-linking": "~4.0.1",
     "expo-media-library": "~15.2.3",
     "expo-router": "^1.2.0",
     "expo-secure-store": "~12.1.1",
-    "expo-splash-screen": "~0.18.1",
+    "expo-splash-screen": "~0.18.2",
     "expo-status-bar": "~1.4.2",
     "firebase": "^9.21.0",
     "react": "18.2.0",
@@ -27,15 +29,18 @@
     "react-native-calendars": "^1.1298.0",
     "react-native-date-picker": "^4.2.13",
     "react-native-gesture-handler": "~2.9.0",
+    "react-native-google-mobile-ads": "^11.1.1",
     "react-native-image-zoom-viewer": "^3.0.1",
     "react-native-reanimated": "~2.14.4",
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
     "react-native-select-dropdown": "^3.3.4",
+    "react-native-svg": "13.4.0",
+    "react-native-svg-transformer": "^1.0.0",
+    "react-native-toast-message": "^2.1.6",
     "react-native-uuid": "^2.0.1",
     "react-native-web": "~0.18.7",
-    "zustand": "^4.3.8",
-    "expo-asset": "~8.9.1"
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

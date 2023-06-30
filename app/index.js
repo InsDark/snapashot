@@ -4,7 +4,10 @@ import { getItemAsync, deleteItemAsync } from 'expo-secure-store'
 import { preventAutoHideAsync, hideAsync } from 'expo-splash-screen'
 import Auth from './auth'
 import Home from './home'
-
+import 'expo-dev-client'
+import { Dimensions } from 'react-native'
+import { View } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
 const Index = () => {
   preventAutoHideAsync()
   setTimeout(hideAsync, 2000)
@@ -28,9 +31,10 @@ const Index = () => {
     getAuth()
   }, [])
   return (
-    <SafeAreaView style={{ height: '100%' }}>
+    <View style={{height: '100%' }}>
       {MainComponent}
-    </SafeAreaView>
+      <StatusBar style='light'/>
+    </View>
   )
 }
 

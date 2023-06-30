@@ -7,11 +7,11 @@ const BottomNav = () => {
   const {currentRoute, setCurrentRoute} = navStore(state => state)
   const router = useRouter()
   return (
-    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', width: '100%', backgroundColor: COLORS.lightGreen }}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '100%', backgroundColor: COLORS.darkBlue, paddingBottom: 5 }}>
 
       <View>
         <AntDesign.Button iconStyle={{ marginRight: 0 }} onPress={() => { setCurrentRoute('Home') 
-        router.push('/') }} size={25} style={{ flexDirection: 'column' }} backgroundColor={currentRoute == 'Home' ? COLORS.darkBlue : COLORS.lightGreen} color={currentRoute == 'Home' ? COLORS.white : COLORS.darkBlue} name='home'>Home</AntDesign.Button>
+        router.push('/') }} size={25} style={{ flexDirection: 'column', padding: 0 }} backgroundColor={COLORS.darkBlue} color={currentRoute == 'Home' ? COLORS.white : COLORS.gray} name='home'>Home</AntDesign.Button>
       </View>
 
       <View>
@@ -19,18 +19,18 @@ const BottomNav = () => {
           onPress={() => {
             router.push('/home/calendar')
             setCurrentRoute('Calendar')
-          }} size={25} style={{ flexDirection: 'column' }} iconStyle={{ marginRight: 0 }} backgroundColor={currentRoute == 'Calendar' ? COLORS.darkBlue : COLORS.lightGreen} color={currentRoute == 'Calendar' ? COLORS.white : COLORS.darkBlue} name='calendar'>Calendar</AntDesign.Button>
+          }} size={25} style={{ flexDirection: 'column', padding: 0 }} iconStyle={{ marginRight: 0 }} backgroundColor={COLORS.darkBlue} color={currentRoute == 'Calendar' ? COLORS.white : COLORS.gray} name='calendar'>Calendar</AntDesign.Button>
       </View>
 
       <View>
-        <AntDesign.Button iconStyle={{ marginRight: 0 }} onPress={() => { router.push('/home/camera') }} size={25} style={{ flexDirection: 'column' }} backgroundColor={currentRoute == 'Camera' ? COLORS.darkBlue : COLORS.lightGreen} color={currentRoute == 'Camera' ? COLORS.white : COLORS.darkBlue} name='camera'>Camera</AntDesign.Button>
+        <AntDesign.Button iconStyle={{ marginRight: 0 }} onPress={() => { router.push('/home/camera') }} size={25} style={{ flexDirection: 'column', padding: 0 }} backgroundColor={COLORS.darkBlue} color={currentRoute == 'Camera' ? COLORS.white : COLORS.gray} name='camera'>Camera</AntDesign.Button>
       </View>
 
       <View>
         <Entypo.Button iconStyle={{ marginRight: 0 }} onPress={() => {
           router.push('home/gallery')
           setCurrentRoute('Gallery')
-        }} size={25} style={{ flexDirection: 'column' }} backgroundColor={currentRoute == 'Gallery' ? COLORS.darkBlue : COLORS.lightGreen} color={currentRoute == 'Gallery' ? COLORS.white : COLORS.darkBlue} name='folder-images'>Gallery</Entypo.Button>
+        }} size={25} style={{ flexDirection: 'column' , padding: 0}} backgroundColor={COLORS.darkBlue} color={currentRoute == 'Gallery' ? COLORS.white : COLORS.gray} name='folder-images'>Gallery</Entypo.Button>
       </View>
 
     </View>

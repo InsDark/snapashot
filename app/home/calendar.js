@@ -1,11 +1,11 @@
 import React from 'react'
-import {  StyleSheet, View } from 'react-native'
+import {  StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { COLORS } from '../../COLORS'
 import BottomNav from '../../components/BottomNav'
 import Navbar from './../../components/Navbar'
 import Calendar from '../../components/Calendar'
-import CalendarEvents from '../../components/calendar/CalendarEvents'
+import { StatusBar } from 'react-native'
 const styles = StyleSheet.create({
   main: {
     backgroundColor: COLORS.lightBlue,
@@ -21,6 +21,7 @@ const calendar = () => {
       <Navbar />
         <Calendar />
       <BottomNav />
+      <StatusBar barStyle="light" />
     </SafeAreaView>
   )
 }
