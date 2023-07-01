@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import Logo from '../../components/Logo'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from './../../firebase'
 import { COLORS } from '../../COLORS'

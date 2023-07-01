@@ -1,4 +1,3 @@
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { useEffect, useState } from 'react'
 import { getItemAsync, deleteItemAsync } from 'expo-secure-store'
 import { preventAutoHideAsync, hideAsync } from 'expo-splash-screen'

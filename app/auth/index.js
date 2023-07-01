@@ -1,6 +1,5 @@
 import React from 'react'
 import { COLORS } from '../../COLORS'
-import Logo from '../../components/Logo'
 import {Link} from 'expo-router'
 import { SafeAreaView  } from 'react-native-safe-area-context'
 import {StyleSheet, Text} from 'react-native'
