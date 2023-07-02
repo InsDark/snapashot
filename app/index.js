@@ -26,6 +26,7 @@ const Index = () => {
         return
       }
       setMainComponent(<Home />)
+      return
     }
     getAuth()
   }, [])
