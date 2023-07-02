@@ -1,16 +1,18 @@
 
 import React from 'react'
 import BasicRegister from './../../components/auth/register/basicRegister'
-import { Text, StyleSheet, Image } from 'react-native'
+import {  StyleSheet } from 'react-native'
+import RegisterBG from './../../assets/login_bg.svg'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { COLORS } from '../../COLORS'
+import { StatusBar } from 'expo-status-bar'
+import { Toast } from 'react-native-toast-message/lib/src/Toast'
 const styles = StyleSheet.create({
     main: {
         backgroundColor: COLORS.darkBlue,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 20,
         position: 'relative'
     },
     image: {
@@ -22,9 +24,10 @@ const styles = StyleSheet.create({
 const Register = () => {
   return (
     <SafeAreaView style={styles.main}>
-      <Image style={styles.image}  source={{uri: 'https://clipground.com/images/long-shutter-clipart-3.jpg'}}></Image>
-        <Text style={{color: COLORS.white, fontSize: 22}} >Sign In To Continue</Text>
-        <BasicRegister/>
+        <RegisterBG width={240} height={240}/>
+        <BasicRegister Toast={Toast}/>
+        <StatusBar style='light'/>
+        <Toast/>
     </SafeAreaView>
   )
 }

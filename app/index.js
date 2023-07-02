@@ -12,19 +12,20 @@ const Index = () => {
   const [MainComponent, setMainComponent] = useState()
   useEffect(() => {
     const getAuth = async () => {
-      const auth = await getItemAsync('auth')
+      const auth =JSON.parse( await getItemAsync('auth'))
       if (!auth) {
         setMainComponent(<Auth />)
         return
       }
+
       const dateNow = Date.now()
+
       if (dateNow > auth.expiration) {
         await deleteItemAsync('auth')
         setMainComponent(<Auth />)
         return
       }
       setMainComponent(<Home />)
-      return
     }
     getAuth()
   }, [])
