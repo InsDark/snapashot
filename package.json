@@ -37,7 +37,6 @@
     "react-native-screens": "~3.20.0",
     "react-native-select-dropdown": "^3.3.4",
     "react-native-svg": "13.4.0",
-    "react-native-svg-transformer": "^1.0.0",
     "react-native-toast-message": "^2.1.6",
     "react-native-uuid": "^2.0.1",
     "react-native-web": "~0.18.7",
@@ -45,7 +44,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
-    "@babel/plugin-proposal-export-namespace-from": "^7.18.9"
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "react-native-svg-transformer": "^1.0.0"
   },
   "resolutions": {
     "metro": "^0.73.7",

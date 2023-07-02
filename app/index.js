@@ -3,7 +3,6 @@ import { getItemAsync, deleteItemAsync } from 'expo-secure-store'
 import { preventAutoHideAsync, hideAsync } from 'expo-splash-screen'
 import Auth from './auth'
 import Home from './home'
-import 'expo-dev-client'
 import { View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 const Index = () => {
@@ -12,7 +11,8 @@ const Index = () => {
   const [MainComponent, setMainComponent] = useState()
   useEffect(() => {
     const getAuth = async () => {
-      const auth =JSON.parse( await getItemAsync('auth'))
+      const auth = JSON.parse( await getItemAsync('auth'))
+      console.log(auth)
       if (!auth) {
         setMainComponent(<Auth />)
         return
