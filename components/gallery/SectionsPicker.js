@@ -12,8 +12,8 @@ const SectionsPicker = ({styles}) => {
 
             <SelectDropdown
                 data={gallerySections}
-                defaultButtonText={gallerySections.length == 0 ? 'Click the right button to add a section' : null}
-                defaultValueByIndex={gallerySection === '' ? 0 : gallerySection}
+                defaultButtonText={gallerySections.length == 0 ? 'Click the right button to add a section' : "Select an album"}
+                defaultValueByIndex={'0'}
                 style={{ flex: 1 }}
                 buttonStyle={{ backgroundColor: COLORS.lightBlue }}
                 buttonTextStyle={{ color: COLORS.white }}
