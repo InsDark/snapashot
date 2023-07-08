@@ -12,10 +12,10 @@ const SectionsPicker = ({styles}) => {
 
             <SelectDropdown
                 data={gallerySections}
+                defaultValue={gallerySections[gallerySection]}
                 defaultButtonText={gallerySections.length == 0 ? 'Click the right button to add a section' : "Select an album"}
-                defaultValueByIndex={'0'}
                 style={{ flex: 1 }}
-                buttonStyle={{ backgroundColor: COLORS.lightBlue }}
+                buttonStyle={{ backgroundColor: COLORS.red }}
                 buttonTextStyle={{ color: COLORS.white }}
                 renderDropdownIcon={() => { return }}
                 disabled={gallerySections.length == 0 ? true : false}

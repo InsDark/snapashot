@@ -2,7 +2,7 @@ import { View } from 'react-native'
 import { AntDesign, Entypo } from '@expo/vector-icons'
 import { COLORS } from '../COLORS'
 import { useRouter } from 'expo-router'
-import {navStore} from './../helpers/stores/NavStore'
+import {navStore} from './../stores/NavStore'
 const BottomNav = () => {
   const {currentRoute, setCurrentRoute} = navStore(state => state)
   const router = useRouter()

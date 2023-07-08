@@ -3,10 +3,10 @@ import EmptyGallery from './EmptyGallery'
 import GalleryContainer from './GalleryContainer'
 import useGallery from '../../hooks/useGallery'
 const GalleryViewer = () => {
-  const [galleryImages] = useGallery()
+  const { albumImages } = useGallery()
   return (
-    <View style={{flex: 1}}>
-      {galleryImages.length ? <GalleryContainer images={galleryImages} /> : <EmptyGallery/> }
+    <View style={{ flex: 1 }}>
+      {albumImages.length ? <GalleryContainer/> : <EmptyGallery />}
     </View>
   )
 }

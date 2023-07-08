@@ -3,7 +3,7 @@ import { Modal, Text, TextInput, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 import { COLORS } from '../../COLORS'
 import Button from '../Button'
-import { ModalStore } from '../../helpers/stores/ModalStore'
+import { ModalStore } from '../../stores/ModalStore'
 const SectionMaker = () => {
     const {modalVisible, setModalVisible} = ModalStore(state => state)
     return (

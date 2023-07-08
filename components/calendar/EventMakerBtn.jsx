@@ -1,6 +1,6 @@
 import { Toast } from "react-native-toast-message/lib/src/Toast"
 import { COLORS } from "../../COLORS"
-import { EventStore } from "../../helpers/stores/EventStore"
+import { EventStore } from "../../stores/EventStore"
 import Button from "../Button"
 import { addEvent } from "../../helpers/calendar/addEvent"
 

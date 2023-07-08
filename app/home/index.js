@@ -7,7 +7,7 @@ import CalendarEvents from '../../components/calendar/CalendarEvents'
 import BottomNav from '../../components/BottomNav'
 import Quote from '../../components/Quote'
 import { getMarkedDates } from '../../helpers/calendar/getMarkedDates'
-import { CalendarStore } from '../../helpers/stores/CalendarStore'
+import { CalendarStore } from '../../stores/CalendarStore'
 import { getGallerySections } from '../../helpers/camera/getGallerySections'
 import Separator from '../../components/Separator'
 const styles = StyleSheet.create({

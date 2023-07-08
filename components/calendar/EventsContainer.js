@@ -4,7 +4,7 @@ import { COLORS } from '../../COLORS'
 import dayjs from 'dayjs'
 import Separator from './../Separator'
 import ButtonTaskMaker from './ButtonTaskMaker'
-import { ModalStore } from '../../helpers/stores/ModalStore'
+import { ModalStore } from '../../stores/ModalStore'
 import EventItem from './EventItem'
 const EventsContainer = ({ events, currentDate }) => {
   const { setModalVisible, modalVisible } = ModalStore(state => state)

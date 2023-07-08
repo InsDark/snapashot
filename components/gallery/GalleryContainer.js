@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
-import { ScrollView, Modal, Image, Pressable } from 'react-native'
-import { ImageViewer } from 'react-native-image-zoom-viewer'
-import GalleryNabvar from './GalleryNabvar'
-const GalleryContainer = ({ images }) => {
-    const [visible, setVisible] = useState(false)
-    const [indexGallery, setIndexGallery] = useState(0)
-    const sortedImages = images.reverse()
-    const modalImages = sortedImages.map(image => ({ url: image.uri }))
+import React from 'react'
+import { ScrollView,  Image, Pressable } from 'react-native'
+import useGallery from '../../hooks/useGallery'
+import useImageViewer from '../../hooks/useImageViewer'
+import ImagesViewer from './ImagesViewer'
+import { GalleryStore } from '../../stores/GalleryStore'
+const GalleryContainer = () => {
+    const {visible, setVisible, albumImages, setIndexGallery} = GalleryStore(state => state)
     return (
         <ScrollView style={{ width: '100%' }} contentContainerStyle={{ justifyContent: 'space-around', flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-            {sortedImages.map((image, index) => {
-                
+            {albumImages.map((image, index) => {
                 return (
                     <Pressable onPress={() => {
                         setVisible(!visible)
@@ -21,12 +19,7 @@ const GalleryContainer = ({ images }) => {
 
                 )
             })}
-            <Modal onRequestClose={() => {
-                setVisible(!visible)
-            }} visible={visible}>
-                <GalleryNabvar/>
-                <ImageViewer saveToLocalByLongPress={true} style={{ zIndex: -10 }} index={indexGallery} imageUrls={modalImages}></ImageViewer>
-            </Modal>
+            <ImagesViewer/>
         </ScrollView>
     )
 }

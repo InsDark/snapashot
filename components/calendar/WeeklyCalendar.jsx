@@ -2,7 +2,7 @@ import React from 'react'
 import { CalendarProvider, WeekCalendar } from 'react-native-calendars'
 import { COLORS } from '../../COLORS'
 import dayjs from 'dayjs'
-import { CalendarStore } from '../../helpers/stores/CalendarStore'
+import { CalendarStore } from '../../stores/CalendarStore'
 import { Text } from 'react-native'
 
 const WeeklyCalendar = () => {

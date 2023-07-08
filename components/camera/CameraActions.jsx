@@ -21,7 +21,6 @@ const CameraActions = ({Toast}) => {
     <View style={styles.navbar}>
       <Entypo.Button onPress={async() => {
         const res = await takePicture({camera: cameraRef, gallerySection, gallerySections})
-        console.log(res)
         if(!res) {Toast.show({text1: "The photo was snapped"})}
         
         }} color={COLORS.gray} size={30} iconStyle={{ marginRight: 0 }} style={styles.button} name='controller-record' />

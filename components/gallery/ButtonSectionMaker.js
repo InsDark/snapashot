@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../Button'
 import { COLORS } from '../../COLORS'
-import {ModalStore} from './../../helpers/stores/ModalStore'
+import {ModalStore} from './../../stores/ModalStore'
 const ButtonSectionMaker = () => {
     const {modalVisible, setModalVisible} = ModalStore(state => state)
     return (

@@ -39,7 +39,6 @@ export const createNewUser = async (email, password, userName, passwordConfirm) 
 
     }
     catch (err) {
-        console.log(err)
         return { type: 'error', message: err.message.slice(10, -1) }
     }
 }

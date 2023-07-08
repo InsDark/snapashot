@@ -12,7 +12,6 @@ const Index = () => {
   useEffect(() => {
     const getAuth = async () => {
       const auth = JSON.parse( await getItemAsync('auth'))
-      console.log(auth)
       if (!auth) {
         setMainComponent(<Auth />)
         return
@@ -26,7 +25,6 @@ const Index = () => {
         return
       }
       setMainComponent(<Home />)
-      return
     }
     getAuth()
   }, [])

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Image } from 'react-native'
-import { ModalStore } from '../../helpers/stores/ModalStore'
+import { ModalStore } from '../../stores/ModalStore'
 import EventMaker from './EventMaker'
 import { COLORS } from '../../COLORS'
 import Logo from './../../assets/bg_no_taks.svg'
