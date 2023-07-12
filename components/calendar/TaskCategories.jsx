@@ -1,14 +1,25 @@
 import React from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import { COLORS } from '../../COLORS'
-import { AntDesign} from '@expo/vector-icons'
+import {FontAwesome, Ionicons, AntDesign, MaterialIcons} from '@expo/vector-icons'
+import { CategoriesStore } from '../../stores/CategoriesStore'
+import CategoryBtn from './CategoryBtn'
+
+const IconsCategories = {
+    "AntDesign" : AntDesign,
+    "FontAwesome" : FontAwesome,
+    "Ionicons" : Ionicons,
+    "MaterialIcons" : MaterialIcons
+}
 
 const TaskCategories = () => {
+    const {eventCategories} = CategoriesStore(state => state)
     return (
-        <ScrollView contentContainerStyle={{gap: 10}} horizontal={true} style={{ gap: 10 }}>
-            <AntDesign.Button name="Safety" iconStyle={{ backgroundColor: COLORS.darkBlue }} style={{ backgroundColor: COLORS.darkBlue }}>Study</AntDesign.Button>
-            <AntDesign.Button name="HTML" iconStyle={{ backgroundColor: COLORS.darkBlue }}  style={{ backgroundColor: COLORS.darkBlue }}>Study</AntDesign.Button>
-            <AntDesign.Button name="HTML" iconStyle={{ backgroundColor: COLORS.darkBlue }}  style={{ backgroundColor: COLORS.darkBlue }}>Study</AntDesign.Button>
+        <ScrollView contentContainerStyle={{gap: 10, padding: 10}} horizontal={true} style={{ gap: 10 }}>
+            {eventCategories.map(category => {
+                const CategoryIcon = IconsCategories[category.iconBrand]                
+                return <CategoryBtn CategoryIcon={CategoryIcon} category={category}/>
+            })}
         </ScrollView>
     )
 }
