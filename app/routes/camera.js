@@ -5,21 +5,9 @@ import { useRouter } from 'expo-router'
 import { getGallerySections } from '../../helpers/camera/getGallerySections'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { COLORS } from '../../COLORS'
+import useGallerySections from '../../hooks/useGallerySections'
 const CameraPage = () => {
-  const { fetchedSections, setFetchedSections, setGallerySections } = cameraStore(state => state)
-  const router = useRouter()
-  useEffect(() => {
-    if(fetchedSections) return 
-    const main = async() => {
-      const gallerySectionData = await getGallerySections()
-      if(!gallerySectionData.length) {
-        return router.push('home/gallery')
-      }
-      setGallerySections(gallerySectionData)
-      setFetchedSections(true)
-    } 
-    main()
-  }, [])
+  useGallerySections()
 
   return (
     <SafeAreaView style={{flex:1, backgroundColor: COLORS.darkBlue, gap: 10}}>

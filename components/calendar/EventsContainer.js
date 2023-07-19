@@ -13,7 +13,7 @@ const EventsContainer = ({ events, currentDate }) => {
       <Text style={{ color: COLORS.darkBlue, fontSize: 25, fontWeight: 'bold', backgroundColor: COLORS.white, textAlign: 'center', width: '50%', borderBottomRightRadius: 10, borderTopRightRadius: 10, padding: 4 }}>18 July</Text>
       <FlatList
         data={eventsFilter}
-        ItemSeparatorComponent={<View style={{ height: 1, backgroundColor: COLORS.gray, width: '70%', display: 'flex', marginRight: '10%', alignSelf: 'flex-end' }} />}
+        ItemSeparatorComponent={<View style={{ margin: 15, height: 1, backgroundColor: COLORS.gray, width: '70%', display: 'flex', marginRight: '10%', alignSelf: 'flex-end' }} />}
         renderItem={({ item }) => (<EventItem item={item}/>)}
       >
       </FlatList>

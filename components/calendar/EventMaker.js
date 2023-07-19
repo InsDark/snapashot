@@ -3,7 +3,6 @@ import { ModalStore } from './../../stores/ModalStore'
 import { COLORS } from '../../COLORS'
 import { EventStore } from './../../stores/EventStore'
 import { Ionicons, Feather, AntDesign } from '@expo/vector-icons'
-import Button from '../Button'
 import { useRouter } from 'expo-router'
 import { addEvent } from '../../helpers/calendar/addEvent'
 import { CalendarStore } from '../../stores/CalendarStore'
@@ -14,7 +13,6 @@ import EventMakerBtn from './EventMakerBtn'
 const EventMaker = () => {
     const { modalVisible, setModalVisible } = ModalStore(state => state)
     const date = new Date()
-    const { markedDays, setMarkedDays, calendarEvents, setCalendarEvents } = CalendarStore(state => state)
     const { setEventTitle, eventDescription, setEventDescription, setEventDate, setEventEndTime, setEventStartTime, eventTitle, eventDate, eventStartTime, eventEndTime } = EventStore(state => state)
     const router = useRouter()
     return (

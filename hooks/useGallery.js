@@ -15,7 +15,7 @@ const useGallery = () => {
 
     useEffect(() => {
         const main = async () => {
-
+            if(!gallerySection) return setAlbumImages([])
             const album = await getAlbumAsync(gallerySections[gallerySection])
             if (album == null) return setAlbumImages([])
             

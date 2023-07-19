@@ -7,7 +7,6 @@ import EventsContainer from './EventsContainer'
 import { CalendarStore } from '../../stores/CalendarStore'
 import EmptyDate from './EmptyDate'
 import getDateEvents from '../../helpers/calendar/getDateEvents'
-import { COLORS } from '../../COLORS'
 
 const CalendarEvents = ({ style }) => {
     dayjs.extend(customParseFormat)
@@ -24,7 +23,8 @@ const CalendarEvents = ({ style }) => {
             getUserEvents()
         }
         catch (e) {
-            alert(err)
+            console.log(e)
+            return []
         }
     }), [currentDate])
     return (

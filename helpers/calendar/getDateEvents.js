@@ -14,8 +14,8 @@ const getDateEvents = async ({currentDate,  userEmail, setCalendarEvents, calend
         const dateEvents = []
         todayEvents.forEach(doc => {
             
-            const { date, description, title } = doc.data()
-            dateEvents.push({ date, description, title })
+            const { date, description, title, time, tags } = doc.data()
+            dateEvents.push({ date, description, title, time, tags })
         })
         
         return setCalendarEvents([...calendarEvents, ...dateEvents])
