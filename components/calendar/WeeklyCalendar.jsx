@@ -12,12 +12,13 @@ const WeeklyCalendar = () => {
         <CalendarProvider
             date={currentDate.format('YYYY-MM-DD')}
             showTodayButton={false}
+            style={{height: '10%', overflow: 'hidden', backgroundColor: 'red'}}
         >
 
             <Text style={{ color: COLORS.white, backgroundColor: COLORS.darkBlue, paddingTop: 10, textAlign: 'center', fontSize: 18 }}>
                 {Current.get('date')}  {Current.format('MMMM')} {Current.get('year')}
             </Text>
-            <WeekCalendar theme={{ calendarBackground: COLORS.darkBlue, dayTextColor: COLORS.gray, selectedDayTextColor: COLORS.white, todayBackgroundColor: COLORS.lightBlue, selectedDayBackgroundColor: COLORS.gray }}
+            <WeekCalendar style={{height: '50%', display: 'none', alignItems: 'center', justifyContent:'center'}}  theme={{ calendarBackground: COLORS.darkBlue, dayTextColor: COLORS.gray, selectedDayTextColor: COLORS.white, todayBackgroundColor: COLORS.lightBlue, selectedDayBackgroundColor: COLORS.gray }}
                 onDayPress={(day) => {
                     setCurrentDate(dayjs(day.dateString))
 

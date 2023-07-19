@@ -10,7 +10,7 @@ const CategoryBtn = ({CategoryIcon, category}) => {
         setSelected(!selected)
         if(!selected) {
           const newSelectedCategories = [...selectedCategories, category]
-          console.log(newSelectedCategories)
+          
           setSelectedCategories([...selectedCategories, category])
           return
         } 

@@ -6,7 +6,7 @@ import { COLORS } from '../COLORS'
 const styles = StyleSheet.create({
     main: {
         width: '100%',
-        backgroundColor: COLORS.darkBlue,
+        padding: 10,
         justifyContent: 'center',
         display: 'flex',
         gap: 10,

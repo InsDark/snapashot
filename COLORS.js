@@ -4,6 +4,6 @@ export const COLORS = {
     darkBlue: '#1E1E1E',
     lightBlue: '#39304c',
     lightGreen: '#0DF5E3',
-    modalBg: '#241e35',
+    modalBg: 'rgba(36, 30, 53, 0.7)',
     red: '#E96860'
 }

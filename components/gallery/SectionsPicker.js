@@ -8,7 +8,7 @@ import SectionMaker from './SectionMaker'
 const SectionsPicker = ({styles}) => {
     const { gallerySections, gallerySection, setGallerySection } = cameraStore(state => state)
     return (
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', backgroundColor: COLORS.darkBlue, width: '100%', ...styles}}>
+        <View style={{ padding: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', backgroundColor: COLORS.darkBlue, width: '100%', ...styles}}>
 
             <SelectDropdown
                 data={gallerySections}

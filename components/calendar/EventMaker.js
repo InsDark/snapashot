@@ -24,13 +24,13 @@ const EventMaker = () => {
             visible={modalVisible}
             animationType='slide'
             transparent={true}
+            onRequestClose={() => {setModalVisible(!modalVisible)}}
         >
             <View style={{ backgroundColor: COLORS.darkBlue, flex: 1 }}>
 
                 <View style={{ width: '100%', flex: 1 }}>
                     <View style={{ flexDirection: 'row', backgroundColor: COLORS.darkBlue, alignItems: 'center' }}>
                         <Feather.Button name="arrow-left" style={{ paddingRight: 0, backgroundColor: COLORS.darkBlue, }} color={COLORS.gray} onPress={() => {
-                            router.push('/')
                             setModalVisible(!modalVisible)
                         }} />
                         <Text style={{ color: COLORS.gray, fontWeight: 'bold' }}>NEW TASK</Text>

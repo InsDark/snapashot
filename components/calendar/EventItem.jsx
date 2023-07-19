@@ -3,7 +3,6 @@ import { Text } from 'react-native'
 import { View } from 'react-native'
 import { COLORS } from '../../COLORS'
 const EventItem = ({ item }) => {
-    console.log(item)
     return (
         <View style={{}}>
                 <Text style={{ color: COLORS.white, fontSize: 20, fontWeight: 'bold' }}>This text is an example onee</Text>

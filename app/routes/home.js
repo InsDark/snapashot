@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet, View, Dimensions } from 'react-native'
 import { COLORS } from '../../COLORS'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Navbar from '../../components/Navbar'
 import CalendarEvents from '../../components/calendar/CalendarEvents'
+import BottomNav from '../../components/BottomNav'
 import Quote from '../../components/Quote'
 import { getMarkedDates } from '../../helpers/calendar/getMarkedDates'
 import { CalendarStore } from '../../stores/CalendarStore'
 import { getGallerySections } from '../../helpers/camera/getGallerySections'
 import Separator from '../../components/Separator'
+import { StatusBar } from 'expo-status-bar'
 const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get('screen').width,
@@ -50,6 +52,7 @@ const Home = () => {
       <Quote />
       <Separator/>
       <CalendarEvents style={{ width: '100%', flex: 5}} />
+      <StatusBar style='light'/>
     </SafeAreaView>
   )
 }

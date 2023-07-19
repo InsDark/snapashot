@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Camera  from './../../components/camera/Camera'
+import Camera  from '../../components/camera/Camera'
 import { cameraStore } from '../../components/camera/CameraStore'
 import { useRouter } from 'expo-router'
 import { getGallerySections } from '../../helpers/camera/getGallerySections'
