@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { StyleSheet } from 'react-native'
 import LoginBG from './../../assets/register_bg.svg'
 import { SafeAreaView } from 'react-native-safe-area-context'

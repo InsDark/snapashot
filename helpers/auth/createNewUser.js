@@ -23,7 +23,7 @@ export const createNewUser = async (email, password, userName, passwordConfirm) 
         const userCredentials = await createUserWithEmailAndPassword(auth, email.trim(), password)
 
 
-        const expiration = userCredentials.user.stsTokenManager.expirationTime
+        const expiration = Date.now() + 604800016
 
         const [authRes, keyRes]= await Promise.allSettled([
             await setDoc(doc(db, 'users', email), {

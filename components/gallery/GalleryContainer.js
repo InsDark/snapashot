@@ -1,7 +1,5 @@
 import React from 'react'
 import { ScrollView,  Image, Pressable } from 'react-native'
-import useGallery from '../../hooks/useGallery'
-import useImageViewer from '../../hooks/useImageViewer'
 import ImagesViewer from './ImagesViewer'
 import { GalleryStore } from '../../stores/GalleryStore'
 const GalleryContainer = () => {

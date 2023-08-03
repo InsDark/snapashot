@@ -13,7 +13,6 @@ const CalendarEvents = ({ style }) => {
     const { calendarEvents, currentDate, setCalendarEvents } = CalendarStore(state => state)
     useEffect((() => {
         try {
-
             const getUserEvents = async () => {
 
                 const auth = await getItemAsync('auth')
@@ -23,7 +22,6 @@ const CalendarEvents = ({ style }) => {
             getUserEvents()
         }
         catch (e) {
-            console.log(e)
             return []
         }
     }), [currentDate])

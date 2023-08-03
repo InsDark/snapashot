@@ -7,7 +7,7 @@ export const loginUser = async ({ email, password }) => {
       return { type: 'error', message: 'Please fill all the fields' }
     }
     const { user } = await signInWithEmailAndPassword(auth, email, password)
-    const expiration = user.stsTokenManager.expirationTime
+    const expiration = Date.now() + 604800016
     const userEmail = user.email
     const userCred = JSON.stringify({ expiration, userEmail })
     await setItemAsync('auth', userCred)

@@ -39,7 +39,6 @@ const EventMakerBtn = () => {
                 // setCalendarEvents({ ...calendarEvents, eventDate: [{ name: eventTitle }] })
 
             } catch (e) {
-                console.log(e)
                 Toast.show({
                     type: "error",
                     text1: 'Something went wrong try again'

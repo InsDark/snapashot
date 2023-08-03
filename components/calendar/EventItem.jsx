@@ -12,7 +12,6 @@ const EventItem = ({ item }) => {
             <View>
                 <View style={{ flexDirection: 'row' }}>
                     { (item.tags) && item.tags.map(tag => {
-                        console.log(tag)
                         return <Text style={{ color: COLORS.white, backgroundColor: getRandomColor(), paddingTop: 4, paddingBottom: 4, paddingRight: 8, paddingLeft: 8 }}>{tag.Title}</Text>
                     })}
                 </View>

@@ -6,7 +6,7 @@ import { getItemAsync } from 'expo-secure-store'
 
 export const takePicture = async ({camera, gallerySection, gallerySections}) => {
     if(gallerySection === '') {
-      return alert('Please select an album')
+      return {type: "error", msg: 'Select and album first'}
     }
     try {
 
@@ -18,7 +18,7 @@ export const takePicture = async ({camera, gallerySection, gallerySections}) => 
 
       const newPhoto = await camera.current.takePictureAsync(options)
       const asset = await createAssetAsync(newPhoto.uri)
-      await createAlbumAsync(gallerySections[gallerySection], asset)
+      await createAlbumAsync(gallerySections[gallerySection], asset, false)
       const { userEmail } = JSON.parse(await getItemAsync('auth'))
 
       const getFileBlob = function (url, cb) {
@@ -36,10 +36,10 @@ export const takePicture = async ({camera, gallerySection, gallerySections}) => 
       getFileBlob(newPhoto.uri, blob => {
         uploadBytes(userPictures, blob)
       })
-
+      return {type: "success", msg: "The picture was snapped"}
       
     }
     catch (err) {
-      alert(err)
+      return {type: "error", msg: err.msg}
     }
   }
