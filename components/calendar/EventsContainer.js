@@ -15,7 +15,7 @@ const EventsContainer = ({ events, currentDate }) => {
       <FlatList
         data={eventsFilter}
         ItemSeparatorComponent={<View style={{ margin: 15, height: 1, backgroundColor: COLORS.gray, width: '70%', display: 'flex', marginRight: '10%', alignSelf: 'flex-end' }} />}
-        renderItem={({ item }) => (<EventItem item={item}/>)}
+        renderItem={({ item }) => (<EventItem key={item} item={item}/>)}
       >
       </FlatList>
       <ButtonTaskMaker backgroundColor={COLORS.darkBlue} setModalVisible={setModalVisible} modalVisible={modalVisible} />
