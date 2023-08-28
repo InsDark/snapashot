@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import { cameraStore } from '../components/camera/CameraStore'
-import { getAlbumAsync, getAlbumsAsync, getAssetsAsync } from 'expo-media-library'
+import { getAlbumAsync,  getAssetsAsync } from 'expo-media-library'
 import { GalleryStore } from '../stores/GalleryStore'
 
 const useGallery = () => {
-    const { gallerySection, gallerySections, indexGallery, setIndexGallery } = cameraStore(state => state)
+    const { gallerySection, gallerySections } = cameraStore(state => state)
     const { albumImages, setAlbumImages } = GalleryStore(state => state)
 
     const updateAlbumImages = ({ imageUri }) => {
         const filterImages = albumImages.filter(image => image.uri !== imageUri)
         setAlbumImages(filterImages)
-        setIndexGallery(indexGallery - 1)
     }
 
     useEffect(() => {

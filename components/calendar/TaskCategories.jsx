@@ -16,9 +16,9 @@ const TaskCategories = () => {
     const {eventCategories} = CategoriesStore(state => state)
     return (
         <ScrollView contentContainerStyle={{gap: 10, padding: 10}} horizontal={true} style={{ gap: 10 }}>
-            {eventCategories.map(category => {
+            {eventCategories.map((category, index) => {
                 const CategoryIcon = IconsCategories[category.iconBrand]                
-                return <CategoryBtn CategoryIcon={CategoryIcon} category={category}/>
+                return <CategoryBtn key={index} CategoryIcon={CategoryIcon} category={category}/>
             })}
         </ScrollView>
     )
