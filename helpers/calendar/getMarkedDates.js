@@ -5,7 +5,7 @@ export const getMarkedDates = async(setMarkedDays) => {
     try {
 
         const {userEmail} = JSON.parse(await getItemAsync('auth'))
-        const markedDatesQuery = query(collection(db,  'markedDates'), where('owner', '==', userEmail))
+        const markedDatesQuery = query(collection(db,  'markedDates'), where('owner', '==', 'matoshurtadodiegoaquiles@gmail.com'))
         const markedDates = await getDocs(markedDatesQuery)
         const markedDatesContainer = {}
         if(markedDates.size == 0) return

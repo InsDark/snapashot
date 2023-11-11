@@ -1,16 +1,53 @@
-import React, { useEffect } from 'react'
-import { StyleSheet, View, Dimensions } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, Dimensions } from 'react-native'
 import { COLORS } from '../../COLORS'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import Navbar from '../../components/Navbar'
+import {  TabView } from '@rneui/themed'
 import CalendarEvents from '../../components/calendar/CalendarEvents'
-import BottomNav from '../../components/BottomNav'
 import Quote from '../../components/Quote'
 import { getMarkedDates } from '../../helpers/calendar/getMarkedDates'
 import { CalendarStore } from '../../stores/CalendarStore'
-import { getGallerySections } from '../../helpers/camera/getGallerySections'
+import { getGallerySections } from '../../helpers/gallery/getGallerySections'
 import Separator from '../../components/Separator'
 import { StatusBar } from 'expo-status-bar'
+import BottomNav from '../../components/BottomNav'
+import { navStore } from '../../stores/NavStore'
+import Gallery from '../../components/gallery/Gallery'
+
+const Home = () => {
+  const { setMarkedDays } = CalendarStore(state => state)
+  const { index, setIndex } = navStore(state => state)
+  useEffect(() => {
+    const main = async () => {
+      await getMarkedDates(setMarkedDays)
+      await getGallerySections()
+    }
+    main()
+  }, [])
+  return (
+    <>
+      <TabView value={index} onChange={(e) => setIndex(e)} animationType='spring'>
+        <TabView.Item style={{ width: '100%', flex: 1 }}>
+          <SafeAreaView style={styles.screen}>
+            <Quote />
+            <Separator />
+            <CalendarEvents style={{ width: '100%', flex: 5 }} />
+          </SafeAreaView>
+        </TabView.Item>
+        <TabView.Item style={{width: '100%'}} >
+          <Gallery/>
+        </TabView.Item>
+      </TabView>
+      <BottomNav />
+      <StatusBar style='light' />
+    </>
+
+  )
+}
+
+export default Home
+
+
 const styles = StyleSheet.create({
   screen: {
     width: Dimensions.get('screen').width,
@@ -37,24 +74,3 @@ const styles = StyleSheet.create({
     borderRadius: 10
   }
 })
-const Home = () => {
-  const { setMarkedDays } = CalendarStore(state => state)
-  useEffect(() => {
-    const main = async () => {
-      await getMarkedDates(setMarkedDays)
-      await getGallerySections()
-    }
-    main()
-  }, [])
-  return (
-    <SafeAreaView style={styles.screen}>
-      <Navbar />
-      <Quote />
-      <Separator/>
-      <CalendarEvents style={{ width: '100%', flex: 5}} />
-      <StatusBar style='light'/>
-    </SafeAreaView>
-  )
-}
-
-export default Home

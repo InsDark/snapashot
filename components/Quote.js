@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         display: 'flex',
         gap: 10,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        backgroundColor: COLORS.darkBlue
 
     },
     title: {

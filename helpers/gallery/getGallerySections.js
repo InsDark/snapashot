@@ -4,7 +4,8 @@ import { getItemAsync } from 'expo-secure-store'
 export const getGallerySections =  async(  ) => {
     try {
         const {userEmail} = JSON.parse(await getItemAsync('auth'))
-        const gallerySectionsQuery = query(collection(db,  'sections'), where('owner', '==', userEmail))
+        
+        const gallerySectionsQuery = query(collection(db,  'sections'), where('owner', '==', 'matoshurtadodiegoaquiles@gmail.com'))
         const gallerySections = await getDocs(gallerySectionsQuery)
         if(!gallerySections.size) return
         

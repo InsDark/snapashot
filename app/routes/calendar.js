@@ -2,8 +2,6 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { COLORS } from '../../COLORS'
-import BottomNav from '../../components/BottomNav'
-import Navbar from '../../components/Navbar'
 import { StatusBar } from 'react-native'
 import Separator from '../../components/Separator'
 import WeeklyCalendar from '../../components/calendar/WeeklyCalendar'
@@ -19,7 +17,6 @@ const styles = StyleSheet.create({
 const calendar = () => {
   return (
     <SafeAreaView style={styles.main}>
-      <Navbar />
       <WeeklyCalendar/>
       <Separator/>
       <CalendarEvents style={{flex: 4, backgroundColor: COLORS.darkBlue, width: '100%', height: '100%'}}/>

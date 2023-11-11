@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { getItemAsync, deleteItemAsync } from 'expo-secure-store'
 import { preventAutoHideAsync, hideAsync } from 'expo-splash-screen'
 import { useRouter } from 'expo-router'
-import { Text } from 'react-native'
 const Index = () => {
   preventAutoHideAsync()
   const router = useRouter()
