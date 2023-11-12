@@ -6,26 +6,34 @@ import { getAlbumAsync, getAssetsAsync } from 'expo-media-library'
 import AssetItem from '../../components/album/AssetItem'
 import AssetMaker from '../../components/album/AssetMaker'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import EmptyAlbum from '../../components/album/EmpyAlbum'
+import ImagesViewer from '../../components/gallery/ImagesViewer'
+import { GalleryStore } from '../../stores/GalleryStore'
 const album = () => {
-  const { album : albumName } = useLocalSearchParams()
-  const [assets, setAssets] = useState([])
+  const { album: albumName } = useLocalSearchParams()
+  const {albumImages : assets, setAlbumImages : setAssets, setCurrentAlbum} = GalleryStore(state => state)
   useEffect(() => {
     const main = async () => {
       const albumRef = await getAlbumAsync(albumName)
-      if(!albumRef) return 
+      if (!albumRef) return
       const { assets } = await getAssetsAsync({ album: albumRef })
       setAssets(assets)
+      setCurrentAlbum(albumName)
     }
     main()
   }, [albumName])
+
   return (
-    <SafeAreaView style={{ backgroundColor: COLORS.darkBlue, flex: 1 }}>
-      <ScrollView style={{  flex: 1 }} contentContainerStyle={{ flexDirection: 'row', flexWrap: 'wrap', gap: 15, padding: 20, justifyContent: 'space-around' }} >
-        {assets?.length !== 0 ? assets?.map((asset) =>
-          <AssetItem asset={asset} />
-        ) : <Text>No Assets</Text>}
-      </ScrollView>
-      <AssetMaker  albumName={albumName} />
+    <SafeAreaView style={{ backgroundColor: COLORS.darkBlue, flex: 1, height: '100%' }}>
+      {assets?.length !== 0 ? 
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 20, flexDirection: 'row', flex: 1, gap: 40, flexWrap: 'wrap' }} >
+          {assets?.map((asset, index) => <AssetItem asset={asset} index={index} key={asset.uri} /> )}
+        </ScrollView> : <EmptyAlbum/>}
+          
+      <AssetMaker albumName={albumName} updateAssets={(newAsset) => {
+        setAssets([newAsset, ...assets])
+      }} />
+      <ImagesViewer/>
       <StatusBar barStyle={'default'} />
     </SafeAreaView>
   )

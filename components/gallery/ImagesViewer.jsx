@@ -9,15 +9,14 @@ import { GalleryStore } from '../../stores/GalleryStore'
 
 const ImagesViewer = () => {
     const { setVisible, visible, indexGallery } = GalleryStore(state => state)
-    const { albumImages } = useGallery()
     const { imagesUris } = useImageViewer()
     return (
         <Modal onRequestClose={() => {
             setVisible(!visible)
         }} visible={visible}>
             <ImageViewer style={{ flex: 1 }} footerContainerStyle={{ position: 'absolute', bottom: 40, right: 40 }} renderFooter={(index) => {
-                return <GalleryNabvar imageRef={albumImages[index]} Toast={Toast} />
-            }} index={indexGallery} imageUrls={imagesUris}></ImageViewer>
+                return <GalleryNabvar imageRef={imagesUris[index]} Toast={Toast} />
+            }} index={indexGallery} imageUrls={imagesUris}/>
             <Toast />
         </Modal>
     )

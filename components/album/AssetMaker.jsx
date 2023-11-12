@@ -4,7 +4,7 @@ import { launchCameraAsync } from "expo-image-picker";
 import { savePicture } from "./../../helpers/gallery/savePicture";
 import { COLORS } from "../../COLORS";
 import { StyleSheet, TouchableOpacity } from "react-native";
-const AssetMaker = ({albumName}) => {
+const AssetMaker = ({albumName, updateAssets}) => {
   return (
     <TouchableOpacity style={styles.main}>
       <MaterialCommunityIcons
@@ -17,11 +17,12 @@ const AssetMaker = ({albumName}) => {
             mediaTypes: "Images",
             base64: false,
           });
+          updateAssets(result.assets[0])
           savePicture({
             photoUri: result.assets[0].uri,
             albumName
           });
-          console.log(result)
+
         }}
       />
     </TouchableOpacity>
